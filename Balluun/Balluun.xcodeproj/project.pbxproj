@@ -1,0 +1,634 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DFC75F8C1B51C9120099833E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8B1B51C9120099833E /* main.m */; };
+		DFC75F8F1B51C9120099833E /* BLNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8E1B51C9120099833E /* BLNAppDelegate.m */; };
+		DFC75F921B51C9120099833E /* BLNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F911B51C9120099833E /* BLNViewController.m */; };
+		DFC75F951B51C9120099833E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFC75F931B51C9120099833E /* Main.storyboard */; };
+		DFC75F971B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75F961B51C9120099833E /* Assets.xcassets */; };
+		DFC75F9A1B51C9120099833E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFC75F981B51C9120099833E /* LaunchScreen.storyboard */; };
+		DFC75F9F1B51C9120099833E /* Balluun WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */; };
+		DFC75FA51B51C9120099833E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FA31B51C9120099833E /* Interface.storyboard */; };
+		DFC75FA71B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FA61B51C9120099833E /* Assets.xcassets */; };
+		DFC75FAE1B51C9120099833E /* Balluun WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB51B51C9120099833E /* InterfaceController.m */; };
+		DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB81B51C9120099833E /* ExtensionDelegate.m */; };
+		DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FBB1B51C9120099833E /* NotificationController.m */; };
+		DFC75FBF1B51C9120099833E /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FBE1B51C9120099833E /* ComplicationController.m */; };
+		DFC75FC11B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FC01B51C9120099833E /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DFC75FA01B51C9120099833E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFC75F7F1B51C9110099833E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFC75F9D1B51C9120099833E;
+			remoteInfo = "Balluun WatchKit App";
+		};
+		DFC75FAF1B51C9120099833E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DFC75F7F1B51C9110099833E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFC75FAC1B51C9120099833E;
+			remoteInfo = "Balluun WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DFC75FC81B51C9120099833E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DFC75FAE1B51C9120099833E /* Balluun WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC75FCC1B51C9120099833E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DFC75F9F1B51C9120099833E /* Balluun WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DFC75F871B51C9120099833E /* Balluun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balluun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFC75F8B1B51C9120099833E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DFC75F8D1B51C9120099833E /* BLNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNAppDelegate.h; sourceTree = "<group>"; };
+		DFC75F8E1B51C9120099833E /* BLNAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLNAppDelegate.m; sourceTree = "<group>"; };
+		DFC75F901B51C9120099833E /* BLNViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNViewController.h; sourceTree = "<group>"; };
+		DFC75F911B51C9120099833E /* BLNViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLNViewController.m; sourceTree = "<group>"; };
+		DFC75F941B51C9120099833E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DFC75F961B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFC75F991B51C9120099833E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DFC75F9B1B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Balluun WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFC75FA41B51C9120099833E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DFC75FA61B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFC75FA81B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Balluun WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFC75FB31B51C9120099833E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		DFC75FB41B51C9120099833E /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		DFC75FB51B51C9120099833E /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		DFC75FB71B51C9120099833E /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		DFC75FB81B51C9120099833E /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		DFC75FBA1B51C9120099833E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
+		DFC75FBB1B51C9120099833E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
+		DFC75FBD1B51C9120099833E /* ComplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplicationController.h; sourceTree = "<group>"; };
+		DFC75FBE1B51C9120099833E /* ComplicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplicationController.m; sourceTree = "<group>"; };
+		DFC75FC01B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFC75FC21B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DFC75F841B51C9110099833E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC75FAA1B51C9120099833E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF5448CC1B51CC5C00AAFBE0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75F931B51C9120099833E /* Main.storyboard */,
+				DFC75F981B51C9120099833E /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		DF5448CD1B51CC7700AAFBE0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		DF5448CE1B51CC7C00AAFBE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DF5448CF1B51CC7F00AAFBE0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75F901B51C9120099833E /* BLNViewController.h */,
+				DFC75F911B51C9120099833E /* BLNViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DFC75F7E1B51C9110099833E = {
+			isa = PBXGroup;
+			children = (
+				DFC75F891B51C9120099833E /* iOS */,
+				DFC75FA21B51C9120099833E /* WatchKit App */,
+				DFC75FB11B51C9120099833E /* WatchKit Extension */,
+				DFC75F881B51C9120099833E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DFC75F881B51C9120099833E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75F871B51C9120099833E /* Balluun.app */,
+				DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */,
+				DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DFC75F891B51C9120099833E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				DF5448CF1B51CC7F00AAFBE0 /* Controllers */,
+				DF5448CE1B51CC7C00AAFBE0 /* Views */,
+				DF5448CD1B51CC7700AAFBE0 /* Models */,
+				DF5448CC1B51CC5C00AAFBE0 /* Storyboards */,
+				DFC75F8D1B51C9120099833E /* BLNAppDelegate.h */,
+				DFC75F8E1B51C9120099833E /* BLNAppDelegate.m */,
+				DFC75F961B51C9120099833E /* Assets.xcassets */,
+				DFC75F9B1B51C9120099833E /* Info.plist */,
+				DFC75F8A1B51C9120099833E /* Supporting Files */,
+			);
+			name = iOS;
+			path = Balluun;
+			sourceTree = "<group>";
+		};
+		DFC75F8A1B51C9120099833E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75F8B1B51C9120099833E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DFC75FA21B51C9120099833E /* WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75FA31B51C9120099833E /* Interface.storyboard */,
+				DFC75FA61B51C9120099833E /* Assets.xcassets */,
+				DFC75FA81B51C9120099833E /* Info.plist */,
+			);
+			name = "WatchKit App";
+			path = "Balluun WatchKit App";
+			sourceTree = "<group>";
+		};
+		DFC75FB11B51C9120099833E /* WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75FB41B51C9120099833E /* InterfaceController.h */,
+				DFC75FB51B51C9120099833E /* InterfaceController.m */,
+				DFC75FB71B51C9120099833E /* ExtensionDelegate.h */,
+				DFC75FB81B51C9120099833E /* ExtensionDelegate.m */,
+				DFC75FBA1B51C9120099833E /* NotificationController.h */,
+				DFC75FBB1B51C9120099833E /* NotificationController.m */,
+				DFC75FBD1B51C9120099833E /* ComplicationController.h */,
+				DFC75FBE1B51C9120099833E /* ComplicationController.m */,
+				DFC75FC01B51C9120099833E /* Assets.xcassets */,
+				DFC75FC21B51C9120099833E /* Info.plist */,
+				DFC75FB21B51C9120099833E /* Supporting Files */,
+			);
+			name = "WatchKit Extension";
+			path = "Balluun WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		DFC75FB21B51C9120099833E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DFC75FB31B51C9120099833E /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DFC75F861B51C9110099833E /* Balluun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFC75FCD1B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun" */;
+			buildPhases = (
+				DFC75F831B51C9110099833E /* Sources */,
+				DFC75F841B51C9110099833E /* Frameworks */,
+				DFC75F851B51C9110099833E /* Resources */,
+				DFC75FCC1B51C9120099833E /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFC75FA11B51C9120099833E /* PBXTargetDependency */,
+			);
+			name = Balluun;
+			productName = Balluun;
+			productReference = DFC75F871B51C9120099833E /* Balluun.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DFC75F9D1B51C9120099833E /* Balluun WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFC75FC91B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun WatchKit App" */;
+			buildPhases = (
+				DFC75F9C1B51C9120099833E /* Resources */,
+				DFC75FC81B51C9120099833E /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DFC75FB01B51C9120099833E /* PBXTargetDependency */,
+			);
+			name = "Balluun WatchKit App";
+			productName = "Balluun WatchKit App";
+			productReference = DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DFC75FAC1B51C9120099833E /* Balluun WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DFC75FC51B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun WatchKit Extension" */;
+			buildPhases = (
+				DFC75FA91B51C9120099833E /* Sources */,
+				DFC75FAA1B51C9120099833E /* Frameworks */,
+				DFC75FAB1B51C9120099833E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Balluun WatchKit Extension";
+			productName = "Balluun WatchKit Extension";
+			productReference = DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DFC75F7F1B51C9110099833E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BLN;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Ottoman;
+				TargetAttributes = {
+					DFC75F861B51C9110099833E = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 6T58EU7PS9;
+					};
+					DFC75F9D1B51C9120099833E = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					DFC75FAC1B51C9120099833E = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = DFC75F821B51C9110099833E /* Build configuration list for PBXProject "Balluun" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DFC75F7E1B51C9110099833E;
+			productRefGroup = DFC75F881B51C9120099833E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DFC75F861B51C9110099833E /* Balluun */,
+				DFC75F9D1B51C9120099833E /* Balluun WatchKit App */,
+				DFC75FAC1B51C9120099833E /* Balluun WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DFC75F851B51C9110099833E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC75F9A1B51C9120099833E /* LaunchScreen.storyboard in Resources */,
+				DFC75F971B51C9120099833E /* Assets.xcassets in Resources */,
+				DFC75F951B51C9120099833E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC75F9C1B51C9120099833E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC75FA71B51C9120099833E /* Assets.xcassets in Resources */,
+				DFC75FA51B51C9120099833E /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC75FAB1B51C9120099833E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC75FC11B51C9120099833E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DFC75F831B51C9110099833E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC75F921B51C9120099833E /* BLNViewController.m in Sources */,
+				DFC75F8F1B51C9120099833E /* BLNAppDelegate.m in Sources */,
+				DFC75F8C1B51C9120099833E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC75FA91B51C9120099833E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */,
+				DFC75FBF1B51C9120099833E /* ComplicationController.m in Sources */,
+				DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */,
+				DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DFC75FA11B51C9120099833E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFC75F9D1B51C9120099833E /* Balluun WatchKit App */;
+			targetProxy = DFC75FA01B51C9120099833E /* PBXContainerItemProxy */;
+		};
+		DFC75FB01B51C9120099833E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFC75FAC1B51C9120099833E /* Balluun WatchKit Extension */;
+			targetProxy = DFC75FAF1B51C9120099833E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DFC75F931B51C9120099833E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFC75F941B51C9120099833E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DFC75F981B51C9120099833E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFC75F991B51C9120099833E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DFC75FA31B51C9120099833E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFC75FA41B51C9120099833E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DFC75FC31B51C9120099833E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DFC75FC41B51C9120099833E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DFC75FC61B51C9120099833E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "Balluun WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DFC75FC71B51C9120099833E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				INFOPLIST_FILE = "Balluun WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		DFC75FCA1B51C9120099833E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = Balluun_WatchKit_Extension;
+				INFOPLIST_FILE = "Balluun WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DFC75FCB1B51C9120099833E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = Balluun_WatchKit_Extension;
+				INFOPLIST_FILE = "Balluun WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		DFC75FCE1B51C9120099833E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Balluun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		DFC75FCF1B51C9120099833E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Balluun/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DFC75F821B51C9110099833E /* Build configuration list for PBXProject "Balluun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFC75FC31B51C9120099833E /* Debug */,
+				DFC75FC41B51C9120099833E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFC75FC51B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFC75FC61B51C9120099833E /* Debug */,
+				DFC75FC71B51C9120099833E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFC75FC91B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFC75FCA1B51C9120099833E /* Debug */,
+				DFC75FCB1B51C9120099833E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DFC75FCD1B51C9120099833E /* Build configuration list for PBXNativeTarget "Balluun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DFC75FCE1B51C9120099833E /* Debug */,
+				DFC75FCF1B51C9120099833E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DFC75F7F1B51C9110099833E /* Project object */;
+}
