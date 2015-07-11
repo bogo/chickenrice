@@ -113,6 +113,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FF15FF81B51D120002D6470 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		DF5448CC1B51CC5C00AAFBE0 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +155,7 @@
 		DFC75F7E1B51C9110099833E = {
 			isa = PBXGroup;
 			children = (
+				3FF15FF81B51D120002D6470 /* Classes */,
 				DFC75F891B51C9120099833E /* iOS */,
 				DFC75FA21B51C9120099833E /* WatchKit App */,
 				DFC75FB11B51C9120099833E /* WatchKit Extension */,
