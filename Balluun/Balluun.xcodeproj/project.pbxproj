@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF15FFA1B51D1E5002D6470 /* BLNManager.m */; };
+		3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160001B52073C002D6470 /* BLNDirectReport.m */; };
 		DF5448D21B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */; };
 		DF5448D61B51DEF800AAFBE0 /* BLNWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D51B51DEF800AAFBE0 /* BLNWelcomeViewController.m */; };
 		DF5448DA1B51DF4500AAFBE0 /* UIColor+Balluun.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D91B51DF4500AAFBE0 /* UIColor+Balluun.m */; };
@@ -79,6 +80,8 @@
 /* Begin PBXFileReference section */
 		3FF15FF91B51D1E5002D6470 /* BLNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNManager.h; sourceTree = "<group>"; };
 		3FF15FFA1B51D1E5002D6470 /* BLNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNManager.m; sourceTree = "<group>"; };
+		3FF15FFF1B52073C002D6470 /* BLNDirectReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNDirectReport.h; sourceTree = "<group>"; };
+		3FF160001B52073C002D6470 /* BLNDirectReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNDirectReport.m; sourceTree = "<group>"; };
 		DF5448D01B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNOwnerSetupViewController.h; sourceTree = "<group>"; };
 		DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNOwnerSetupViewController.m; sourceTree = "<group>"; };
 		DF5448D41B51DEF800AAFBE0 /* BLNWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNWelcomeViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 			children = (
 				3FF15FF91B51D1E5002D6470 /* BLNManager.h */,
 				3FF15FFA1B51D1E5002D6470 /* BLNManager.m */,
+				3FF15FFF1B52073C002D6470 /* BLNDirectReport.h */,
+				3FF160001B52073C002D6470 /* BLNDirectReport.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			files = (
 				DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */,
 				DFC75FBF1B51C9120099833E /* ComplicationController.m in Sources */,
+				3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */,
 				DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */,
 				DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */,
 			);
