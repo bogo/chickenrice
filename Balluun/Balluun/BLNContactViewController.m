@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIView *contentView;
 
 @property (nonatomic, strong) UIView *contactContainerView;
+@property (nonatomic, strong) UILabel *balloonView;
 @property (nonatomic, strong) BLNActionButton *acceptButton;
 @property (nonatomic, strong) UILabel *headerLabel;
 @property (nonatomic, strong) UILabel *bodyLabel;
@@ -36,8 +37,23 @@
     self.headerLabel.textColor = [UIColor bln_textColor];
     self.headerLabel.shadowColor = [UIColor whiteColor];
     self.headerLabel.shadowOffset = CGSizeMake(0, 1);
-
     [self.contentView addSubview:self.headerLabel];
+
+    self.balloonView = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.balloonView.font = [UIFont systemFontOfSize:64.0];
+    self.balloonView.textAlignment = NSTextAlignmentCenter;
+    self.balloonView.text = @"🎈";
+    
+    [UIView animateWithDuration:1.8
+                          delay:0.0
+                        options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat
+                     animations:^{
+                         CGAffineTransform translation = CGAffineTransformMakeTranslation(-5, -15);
+                         CGAffineTransform rotation = CGAffineTransformRotate(translation, 0.1);
+                         self.balloonView.transform = rotation;
+                     } completion:nil];
+    [self.contentView addSubview:self.balloonView];
+    
     
     self.bodyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.bodyLabel.font = [UIFont latoLightFontOfSize:15.0];
@@ -90,7 +106,7 @@
     NSNumber *spacer = @15;
     NSNumber *buttonHeight = @65;
     NSDictionary *metrics = NSDictionaryOfVariableBindings(width, height, margin, buttonHeight, spacer);
-    NSDictionary *views = NSDictionaryOfVariableBindings(contactView, _contactContainerView, _acceptButton, _contentView, _headerLabel, _bodyLabel);
+    NSDictionary *views = NSDictionaryOfVariableBindings(contactView, _contactContainerView, _acceptButton, _contentView, _headerLabel, _bodyLabel, _balloonView);
     
     [self.view addConstraintsFromVisualFormatStrings:@[
                                                        @"H:|-(margin)-[_contentView(width)]-(margin)-|",
@@ -104,7 +120,8 @@
                                                               @"H:|[_acceptButton]|",
                                                               @"H:|[_headerLabel]|",
                                                               @"H:|[_bodyLabel]|",
-                                                              @"V:[_headerLabel]-(spacer)-[_bodyLabel]-(spacer)-[_acceptButton(buttonHeight)]-(spacer)-[_contactContainerView(height)]|",
+                                                              @"H:|[_balloonView]|",
+                                                              @"V:[_balloonView]-[_headerLabel]-(spacer)-[_bodyLabel]-(spacer)-[_acceptButton(buttonHeight)]-(spacer)-[_contactContainerView(height)]|",
                                                               ]
                                                     metrics:metrics
                                                       views:views];
