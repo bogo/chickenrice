@@ -41,6 +41,7 @@ NSString *const BLNManagerBalloonIndexKey = @"balloons";
 
 #pragma mark - Messages
 
+NSString *const BLNMessagePanicType = @"shit really hit the fan";
 NSString *const BLNMessagePANICINTHEDISCOType = @"panic!";
 NSString *const BLNMessageCheerioType = @"phew!";
 NSString *const BLNMessageBiometricsUpdateType = @"biometric-update";

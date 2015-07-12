@@ -163,6 +163,16 @@
     }];
 }
 
+- (void)panic
+{
+    NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessagePanicType payload:nil];
+    [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
+        
+    } errorHandler:^(NSError * __nonnull error) {
+        
+    }];
+}
+
 - (void)stopDefconState
 {
     if (self.panicSession)

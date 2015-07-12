@@ -8,6 +8,9 @@
 
 #import "BLNManager.h"
 
+#define PANIC_URL @""
+#define PING_URL @""
+
 @interface BLNManager ()
 
 @property (nonatomic, strong) NSHashTable *observers;
@@ -115,7 +118,7 @@
         [self.locationManager startUpdatingHeading];
 
     }
-    else
+    else if (_currentAlertState < BLNAlertStateRed)
     {
         [self.locationManager stopUpdatingHeading];
         [self.locationManager stopUpdatingLocation];
@@ -125,9 +128,53 @@
 
 - (void)startDefconState
 {
-    [self setCurrentAlertState:BLNAlertStateDEFCON];
-    // tell watch app that we need to start a workout session
+    [self setCurrentAlertState:BLNAlertStateDEFCON];    
+}
+
+- (void)panic
+{
+    [self setCurrentAlertState:BLNAlertStatePanicked];
     
+    NSDictionary *dict = [self JSONDictionaryForState:self.currentAlertState];
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
+    if (jsonData)
+    {
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PANIC_URL]];
+        request.HTTPMethod = @"POST";
+        request.HTTPBody = jsonData;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
+        
+        [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
+            if (self.currentAlertState >= BLNAlertStateRed)
+            {
+                [self performSelector:@selector(updateServer) withObject:nil afterDelay:(self.currentAlertState == BLNAlertStateDEFCON) ? 15 : 45];
+            }
+            
+            if (!error)
+            {
+                NSLog(@"Error pinging server :( %@", error);
+                return;
+            }
+            
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            BLNAlertState locationScore = [[jsonDict objectForKey:@"score"] unsignedIntegerValue];
+            
+            if (locationScore != self.currentLocationScore)
+            {
+                _currentLocationScore = locationScore;
+                _currentLocationScoreTimestamp = [NSDate date];
+                [self updateWatch];
+            }
+            
+        }] resume];
+    }
+    else
+    {
+        NSLog(@"OH NOES WE CANNOT SEND SERVER UPDATE! %@", error);
+    }
 }
 
 - (void)stopDefconState
@@ -191,7 +238,7 @@
         }
     }
     
-    if (state == BLNAlertStateDEFCON)
+    if (state >= BLNAlertStateDEFCON)
     {
         // include audio
     }
@@ -220,7 +267,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     if (jsonData)
     {
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@""]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PING_URL]];
         request.HTTPMethod = @"POST";
         request.HTTPBody = jsonData;
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
@@ -333,13 +380,13 @@
 /** Called when any of the Watch state properties change */
 - (void)sessionWatchStateDidChange:(nonnull WCSession *)session
 {
-
+    [self updateWatch];
 }
 
 /** Called when the reachable state of the counterpart app changes. The receiver should check the reachable property on receiving this delegate callback. */
 - (void)sessionReachabilityDidChange:(WCSession *)session
 {
-    
+    [self updateWatch];
 }
 
 /** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
@@ -375,39 +422,11 @@
     {
         [self setCurrentAlertState:BLNAlertStateGreen];
     }
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData
-{
     
-}
-
-/** Called on the delegate of the receiver when the sender sends message data that expects a reply. Will be called on startup if the incoming message data caused the receiver to launch. */
-- (void)session:(WCSession *)session didReceiveMessageData:(NSData *)messageData replyHandler:(void(^)(NSData *replyMessageData))replyHandler
-{
-    
-}
-
-
-/** -------------------------- Background Transfers ------------------------- */
-
-/** Called on the delegate of the receiver. Will be called on startup if an applicationContext is available. */
-- (void)session:(WCSession *)session didReceiveApplicationContext:(NSDictionary<NSString *, id> *)applicationContext
-{
-    
-}
-
-/** Called on the sending side after the user info transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the user info finished. */
-- (void)session:(WCSession * __nonnull)session didFinishUserInfoTransfer:(WCSessionUserInfoTransfer *)userInfoTransfer error:(nullable NSError *)error
-{
-    
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the user info finished transferring when the receiver was not running. */
-- (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo
-{
-    
+    if ([type isEqualToString:BLNMessagePanicType])
+    {
+        [self panic];
+    }
 }
 
 @end

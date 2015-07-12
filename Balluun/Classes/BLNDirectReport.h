@@ -23,6 +23,7 @@
 
 - (void)requestLatestState;
 - (void)startDefconState;
+- (void)panic;
 - (void)stopDefconState;
 
 @end

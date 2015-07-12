@@ -49,7 +49,9 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 + (instancetype)sharedInstance;
 
 - (void)startDefconState;
+- (void)panic;
 - (void)stopDefconState;
+
 - (void)requestPermissions;
 - (void)updateWatch;
 - (void)updateServer;

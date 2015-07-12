@@ -4,7 +4,8 @@ typedef NS_ENUM(NSUInteger, BLNAlertState) {
     BLNAlertStateGreen,
     BLNAlertStateOrange,
     BLNAlertStateRed,
-    BLNAlertStateDEFCON
+    BLNAlertStateDEFCON,
+    BLNAlertStatePanicked
 };
 
 @interface BLNAlertStateHelper : NSObject

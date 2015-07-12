@@ -42,6 +42,7 @@ extern NSString *const BLNManagerBalloonIndexKey;
 
 #pragma mark - Messaging
 
+extern NSString *const BLNMessagePanicType;
 extern NSString *const BLNMessageRequestLatestStateType;
 extern NSString *const BLNMessageUpdateComplicationType;
 extern NSString *const BLNMessagePANICINTHEDISCOType;
