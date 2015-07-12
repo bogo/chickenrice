@@ -43,7 +43,9 @@
 {
     [super viewDidAppear:animated];
 
-    [self configureLevelLabelWithAlertState:[BLNManager sharedInstance].currentAlertState];
+    BLNAlertState alertState = [BLNManager sharedInstance].currentAlertState;
+    [self configureLevelLabelWithAlertState:alertState];
+    [self configureDefconButtonWithAlertState:alertState];
 }
 
 #pragma mark - UI Setup
