@@ -8,8 +8,8 @@
 
 #import "BLNManager.h"
 
-#define PANIC_URL @""
-#define PING_URL @""
+#define PANIC_URL @"http://chickenrice-112258.nitrousapp.com:3000/panic"
+#define PING_URL @"http://chickenrice-112258.nitrousapp.com:3000/ping"
 
 @interface BLNManager ()
 
@@ -284,7 +284,7 @@
                 [self performSelector:@selector(updateServer) withObject:nil afterDelay:(self.currentAlertState == BLNAlertStateDEFCON) ? 15 : 45];
             }
             
-            if (!error)
+            if (error)
             {
                 NSLog(@"Error pinging server :( %@", error);
                 return;
