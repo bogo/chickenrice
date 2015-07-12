@@ -79,7 +79,7 @@
     }
 
     HKQuantityType *heartRateType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
-    if ([self.healthStore authorizationStatusForType:heartRateType])
+    if ([self.healthStore authorizationStatusForType:heartRateType] != HKAuthorizationStatusSharingAuthorized)
     {
         [self.healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObject:heartRateType] completion:^(BOOL success, NSError * __nullable error) {
             if (!success)

@@ -20,8 +20,7 @@
 
     self.window.rootViewController = [[BLNMetaViewController alloc] initWithRootViewController:[BLNLaunchViewController new]];
 
-    CLLocationManager *manager = [CLLocationManager new];
-    [manager requestAlwaysAuthorization];
+    [[BLNManager sharedInstance] requestPermissions];
     
     return YES;
 }

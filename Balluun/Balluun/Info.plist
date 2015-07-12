@@ -37,6 +37,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>I WANT TO KNOW HOW YOU FEEL</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Trackng you for your safety</string>
 	<key>UIBackgroundModes</key>
