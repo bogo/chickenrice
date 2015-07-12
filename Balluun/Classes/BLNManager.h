@@ -11,13 +11,7 @@
 #import <HealthKit/HealthKit.h>
 #import <CoreMotion/CoreMotion.h>
 #import <WatchConnectivity/WatchConnectivity.h>
-
-typedef NS_ENUM(NSUInteger, BLNAlertState) {
-    BLNAlertStateGreen,
-    BLNAlertStateOrange,
-    BLNAlertStateRed,
-    BLNAlertStateDEFCON
-};
+#import "BLNCommon.h"
 
 /**
  * Enum to describe the login states.
@@ -27,30 +21,7 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
     BLNLoginStateLoggedIn,
 };
 
-extern NSString *const BLNManagerJSONLocationKey;
-extern NSString *const BLNManagerJSONHeadingKey;
-extern NSString *const BLNManagerJSONActivityKey;
-extern NSString *const BLNManagerJSONTimestampKey;
-extern NSString *const BLNManagerJSONUserHashKey;
-extern NSString *const BLNManagerJSONAlertStateKey;
 
-extern NSString *const BLNManagerJSONLocationLatitudeKey;
-extern NSString *const BLNManagerJSONLocationLongitudeKey;
-extern NSString *const BLNManagerJSONLocationHorizontalAccuracyKey;
-extern NSString *const BLNManagerJSONLocationVerticalAccuracyKey;
-extern NSString *const BLNManagerJSONLocationAltitudeKey;
-extern NSString *const BLNManagerJSONLocationTimestampKey;
-extern NSString *const BLNManagerJSONLocationSpeedKey;
-extern NSString *const BLNManagerJSONLocationDirectionKey;
-
-extern NSString *const BLNManagerJSONHeadingMagneticKey;
-extern NSString *const BLNManagerJSONHeadingTrueKey;
-extern NSString *const BLNManagerJSONHeadingAccuracyKey;
-extern NSString *const BLNManagerJSONHeadingTimestampKey;
-
-extern NSString *const BLNManagerJSONActivityTypeKey;
-extern NSString *const BLNManagerJSONActivityConfidenceKey;
-extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 
 extern NSString *const BLNManagerBalloonIndexKey;
 

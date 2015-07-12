@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <WatchConnectivity/WatchConnectivity.h>
 #import <ClockKit/ClockKit.h>
+#import "BLNCommon.h"
 
 @interface BLNDirectReport : NSObject <WCSessionDelegate, CLKComplicationDataSource>
 
