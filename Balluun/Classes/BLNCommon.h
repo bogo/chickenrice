@@ -7,13 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSUInteger, BLNAlertState) {
-    BLNAlertStateGreen,
-    BLNAlertStateOrange,
-    BLNAlertStateRed,
-    BLNAlertStateDEFCON
-};
+#import "BLNAlertState.h"
 
 extern NSString *const BLNManagerJSONLocationKey;
 extern NSString *const BLNManagerJSONHeadingKey;

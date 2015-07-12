@@ -12,7 +12,6 @@
 #import <CoreMotion/CoreMotion.h>
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "BLNCommon.h"
-#import "BLNAlertState.h"
 
 /**
  * Enum to describe the login states.

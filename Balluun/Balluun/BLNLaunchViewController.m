@@ -17,7 +17,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    self.navigationController.navigationBarHidden = YES;
     switch ([BLNManager sharedInstance].loginState) {
         case BLNLoginStateLoggedIn:
         {
