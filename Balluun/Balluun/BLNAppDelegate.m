@@ -2,6 +2,7 @@
 #import "BLNManager.h"
 #import "BLNMetaViewController.h"
 #import "BLNLaunchViewController.h"
+@import CoreLocation;
 
 @interface BLNAppDelegate ()
 
@@ -19,6 +20,9 @@
 
     self.window.rootViewController = [[BLNMetaViewController alloc] initWithRootViewController:[BLNLaunchViewController new]];
 
+    CLLocationManager *manager = [CLLocationManager new];
+    [manager requestAlwaysAuthorization];
+    
     return YES;
 }
 

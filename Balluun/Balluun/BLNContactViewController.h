@@ -11,6 +11,10 @@
  */
 @property (nonatomic, strong) id<BLNContactProvider> contactProvider;
 
+@property (nonatomic, strong) NSString *headerText;
+
+@property (nonatomic, strong) NSString *bodyText;
+
 /**
  * @warning This asserts in parent class. You need to subclass.
  */
