@@ -34,6 +34,7 @@
     {
         _currentAlertState = BLNAlertStateGreen;
         _currentLocationScore = BLNAlertStateGreen;
+        _currentLocationScoreTimestamp = [NSDate date];
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         _queue = [[NSOperationQueue alloc] init];
         
