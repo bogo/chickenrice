@@ -2,6 +2,7 @@
 #import "BLNTrustedFriendsSetupViewController.h"
 #import "BLNTrustedFriendsContactProvider.h"
 #import "BLNContactHelper.h"
+#import "BLNManager.h"
 
 @import Contacts;
 @import ContactsUI;
@@ -17,6 +18,8 @@
 
 - (void)acceptContact
 {
+    [BLNManager sharedInstance].name = [self.contactProvider provideContactToConfirm].givenName;
+
     BLNTrustedFriendsSetupViewController *viewController = [[BLNTrustedFriendsSetupViewController alloc] initWithOwnerContact:[BLNContactHelper sharedHelper].deviceOwner];
     viewController.contactProvider = [BLNTrustedFriendsContactProvider new];
     

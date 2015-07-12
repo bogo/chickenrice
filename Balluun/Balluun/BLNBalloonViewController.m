@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) UILabel *promptLabel;
 @property (nonatomic, strong) UILabel *levelLabel;
+@property (nonatomic, strong) UILabel *biometricLabel;
 @property (nonatomic, strong) BLNActionButton *defconButton;
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) MKMapView *mapView;
@@ -55,11 +56,15 @@
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.levelLabel];
     
+    self.biometricLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self setupBiometricLabel];
+    [self.view addSubview:self.biometricLabel];
+    
     self.defconButton = [[BLNActionButton alloc] initWithFrame:CGRectZero];
     [self setupDefconButton];
     [self.view addSubview:self.defconButton];
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(_mapView, _maskView, _promptLabel, _levelLabel, _defconButton);
+    NSDictionary *views = NSDictionaryOfVariableBindings(_mapView, _maskView, _promptLabel, _levelLabel, _defconButton, _biometricLabel);
     
     [self.view addConstraintsFromVisualFormatStrings:@[
                                                        @"H:|[_mapView]|",
@@ -70,7 +75,8 @@
                                                        @"V:|[_maskView]|",
                                                        @"V:|-(100)-[_promptLabel]-[_levelLabel]",
                                                        @"H:|-[_defconButton]-|",
-                                                       @"V:[_defconButton(65)]-(100)-|",
+                                                       @"H:|-[_biometricLabel]-|",
+                                                       @"V:[_biometricLabel]-[_defconButton(65)]-(100)-|",
                                                        ]
                                              metrics:nil
                                                views:views];
@@ -126,11 +132,19 @@
         case BLNAlertStateGreen:
         case BLNAlertStateOrange:
         case BLNAlertStateRed: {
+            self.defconButton.alpha = 1.0;
             self.defconButton.selected = NO;
             break;
         }
+
         case BLNAlertStateDEFCON: {
             self.defconButton.selected = YES;
+            break;
+        }
+
+        case BLNAlertStatePanicked: {
+            self.defconButton.selected = YES;
+            self.defconButton.alpha = 0.0;
             break;
         }
     }
@@ -154,12 +168,42 @@
         case BLNAlertStateRed: {
             break;
         }
+        case BLNAlertStatePanicked: {
+            break;
+        }
         case BLNAlertStateDEFCON: {
             break;
         }
     }
     self.maskView.backgroundColor = [BLNAlertStateHelper colorFromAlertState:alertState];
     self.mapView.tintColor = [BLNAlertStateHelper colorFromAlertState:alertState];
+}
+
+- (void)setupBiometricLabel
+{
+    self.biometricLabel.textAlignment = NSTextAlignmentCenter;
+    self.biometricLabel.font = [UIFont latoFontOfSize:16.0];
+    self.biometricLabel.textColor = [UIColor bln_textColor];
+    self.biometricLabel.shadowColor = [UIColor whiteColor];
+    self.biometricLabel.shadowOffset = CGSizeMake(0, 1);
+}
+
+- (void)configureBiometricLabelWithAlertState:(BLNAlertState)alertState
+{
+    switch (alertState) {
+        case BLNAlertStateGreen:
+        case BLNAlertStateOrange:
+        case BLNAlertStateRed: {
+            self.biometricLabel.alpha = 0.0;
+            break;
+        }
+        case BLNAlertStateDEFCON:
+        case BLNAlertStatePanicked: {
+            self.biometricLabel.alpha = 1.0;
+            self.biometricLabel.text = [NSString stringWithFormat:@"%@'s heart rate is %ld bpm", [BLNManager sharedInstance].name, (long)[BLNManager sharedInstance].currentHeartRate.integerValue];
+            break;
+        }
+    }
 }
 
 #pragma mark - DEFCON
@@ -190,6 +234,14 @@
         [self configureMapWithAlertState:alertState];
         [self configureLevelLabelWithAlertState:alertState];
         [self configureDefconButtonWithAlertState:alertState];
+        [self configureBiometricLabelWithAlertState:alertState];
+    });
+}
+
+- (void)manager:(BLNManager *)manager changedBPMTo:(double)bpm
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self configureBiometricLabelWithAlertState:manager.currentAlertState];
     });
 }
 
