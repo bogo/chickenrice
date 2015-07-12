@@ -6,7 +6,7 @@
 - (void)applicationDidFinishLaunching
 {
     // Perform any final initialization of your application.
-    [BLNDirectReport sharedInstance];
+    [[BLNDirectReport sharedInstance] requestLatestState];
 }
 
 - (void)applicationDidBecomeActive

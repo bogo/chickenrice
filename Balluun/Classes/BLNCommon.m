@@ -40,10 +40,12 @@ NSString *const BLNManagerBalloonIndexKey = @"balloons";
 #pragma mark - Messages
 
 NSString *const BLNMessageRequestLatestStateType = @"latest-state-plz";
-NSString *const BLNMessageUpdateCompliactionType = @"update-complication-plz";
+NSString *const BLNMessageUpdateComplicationType = @"update-complication-plz";
+NSString *const BLNMessageTimeStampKey = @"timestamp";
 
 NSString *const BLNManagerMessagePayloadTypeKey = @"type";
 NSString *const BLNManagerMessagePayloadDataKey = @"data";
+
 
 @implementation BLNCommon
 

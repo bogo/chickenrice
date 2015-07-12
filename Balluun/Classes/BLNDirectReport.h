@@ -14,7 +14,10 @@
 @interface BLNDirectReport : NSObject <WCSessionDelegate, CLKComplicationDataSource>
 
 @property (nonatomic, readonly, strong) WCSession *watchSession;
+@property (nonatomic, readonly, strong) NSSet *ballonIndexItems;
 
 + (instancetype)sharedInstance;
+
+- (void)requestLatestState;
 
 @end

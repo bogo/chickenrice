@@ -49,7 +49,8 @@ extern NSString *const BLNManagerBalloonIndexKey;
 #pragma mark - Messaging
 
 extern NSString *const BLNMessageRequestLatestStateType;
-extern NSString *const BLNMessageUpdateCompliactionType;
+extern NSString *const BLNMessageUpdateComplicationType;
+extern NSString *const BLNMessageTimeStampKey;
 
 @interface BLNCommon : NSObject
 
