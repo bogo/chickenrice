@@ -71,6 +71,7 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 @protocol BLNManagerObserver <NSObject>
 
 @optional
+- (void)manager:(BLNManager *)manager changedLocationStateTo:(BLNAlertState)alertState;
 - (void)manager:(BLNManager *)manager changedAlertStateTo:(BLNAlertState)alertState;
 - (void)manager:(BLNManager *)manager changedBPMTo:(double)bpm;
 

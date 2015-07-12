@@ -15,7 +15,7 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
 @implementation _BLNBallonIndexItem
 - (instancetype)initWithBalloonMessageUserInfo:(NSDictionary *)ballonUserInfo
 {
-    if (![ballonUserInfo objectForKey:BLNManagerBalloonIndexKey] || [ballonUserInfo objectForKey:BLNMessageTimeStampKey])
+    if (![ballonUserInfo objectForKey:BLNManagerBalloonIndexKey] || ![ballonUserInfo objectForKey:BLNMessageTimeStampKey])
     {
         return nil;
     }
@@ -261,13 +261,7 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
 {
     if ([[BLNCommon typeForMessageUserInfo:userInfo] isEqualToString:BLNMessageUpdateComplicationType])
     {
-        NSDictionary *data = [BLNCommon payloadForMessageUserInfo:userInfo];
-        if (!data)
-        {
-            return;
-        }
-        [(NSMutableSet *)self.ballonIndexItems addObject:[[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:data]];
-        _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];   
+        [self updateCurrentStateWithReplyMessage:[BLNCommon payloadForMessageUserInfo:userInfo]];
     }
 }
 

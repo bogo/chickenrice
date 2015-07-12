@@ -86,10 +86,11 @@
 {
     [super viewDidAppear:animated];
 
-    BLNAlertState alertState = [BLNManager sharedInstance].currentAlertState;
+    BLNAlertState alertState = [BLNManager sharedInstance].currentLocationScore;
     [self configureMapWithAlertState:alertState];
     [self configureLevelLabelWithAlertState:alertState];
     [self configureDefconButtonWithAlertState:alertState];
+    [self configureBiometricLabelWithAlertState:alertState];
 }
 
 #pragma mark - UI Setup
@@ -230,6 +231,10 @@
 #pragma mark - BLNManagerObserver
 - (void)manager:(BLNManager *)manager changedAlertStateTo:(BLNAlertState)alertState
 {
+    if (alertState == BLNAlertStateGreen) {
+        alertState = manager.currentLocationScore;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self configureMapWithAlertState:alertState];
         [self configureLevelLabelWithAlertState:alertState];
@@ -242,6 +247,16 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self configureBiometricLabelWithAlertState:manager.currentAlertState];
+    });
+}
+
+- (void)manager:(BLNManager *)manager changedLocationStateTo:(BLNAlertState)alertState
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self configureMapWithAlertState:alertState];
+        [self configureLevelLabelWithAlertState:alertState];
+        [self configureDefconButtonWithAlertState:alertState];
+        [self configureBiometricLabelWithAlertState:alertState];
     });
 }
 
