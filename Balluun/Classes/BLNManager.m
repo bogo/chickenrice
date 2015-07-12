@@ -409,6 +409,8 @@
 /** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler
 {
+    NSLog(@"MESSAGE: %@", message);
+    
     NSString *type = [BLNCommon typeForMessageUserInfo:message];
     NSDictionary *payload = [BLNCommon payloadForMessageUserInfo:message];
    
@@ -422,8 +424,9 @@
     {
         NSDictionary *latestSample = [[payload objectForKey:BLMMessageBiometericSamplesKey] lastObject];
         _currentHeartRate = [latestSample objectForKey:BLMMessageBiometricHeartRateKey];
+        NSLog(@"HELLO HEARTBEAT! %@", payload);
         [self updateServer];
-        replyHandler(nil);
+        replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessagePANICINTHEDISCOType])

@@ -10,6 +10,7 @@
         @(BLNAlertStateOrange) : @"Orange",
         @(BLNAlertStateRed) : @"Red",
         @(BLNAlertStateDEFCON) : @"DEFCON",
+        @(BLNAlertStatePanicked) : @"Panic",
     };
 }
 

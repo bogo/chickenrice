@@ -27,6 +27,8 @@
 		DF5449C41B51FE3B00AAFBE0 /* BLNContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449C31B51FE3B00AAFBE0 /* BLNContactViewController.m */; };
 		DF5449C81B52005D00AAFBE0 /* BLNOwnerContactProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449C71B52005D00AAFBE0 /* BLNOwnerContactProvider.m */; };
 		DF5449CB1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449CA1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m */; };
+		DF73A6DB1B52BF3600334BC8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73A6DA1B52BF3600334BC8 /* HealthKit.framework */; };
+		DF73A6E01B52C60100334BC8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF73A6DF1B52C60100334BC8 /* HealthKit.framework */; };
 		DF74BF4F1B529E3000DD2C58 /* LatoFont.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF74BF4C1B529E3000DD2C58 /* LatoFont.bundle */; };
 		DF74BF501B529E3000DD2C58 /* UIFont+Lato.m in Sources */ = {isa = PBXBuildFile; fileRef = DF74BF4E1B529E3000DD2C58 /* UIFont+Lato.m */; };
 		DFC75F8C1B51C9120099833E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8B1B51C9120099833E /* main.m */; };
@@ -123,6 +125,11 @@
 		DF5449C71B52005D00AAFBE0 /* BLNOwnerContactProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNOwnerContactProvider.m; sourceTree = "<group>"; };
 		DF5449C91B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNTrustedFriendsContactProvider.h; sourceTree = "<group>"; };
 		DF5449CA1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNTrustedFriendsContactProvider.m; sourceTree = "<group>"; };
+		DF73A6DA1B52BF3600334BC8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		DF73A6DC1B52BF3600334BC8 /* Balluun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = Balluun.entitlements; path = Balluun/Balluun.entitlements; sourceTree = "<group>"; };
+		DF73A6DD1B52C5F000334BC8 /* Balluun WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Balluun WatchKit App.entitlements"; path = "Balluun WatchKit App/Balluun WatchKit App.entitlements"; sourceTree = "<group>"; };
+		DF73A6DE1B52C5FF00334BC8 /* Balluun WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Balluun WatchKit Extension.entitlements"; path = "Balluun WatchKit Extension/Balluun WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		DF73A6DF1B52C60100334BC8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		DF74BF4C1B529E3000DD2C58 /* LatoFont.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LatoFont.bundle; path = Vendor/LatoFont/LatoFont.bundle; sourceTree = "<group>"; };
 		DF74BF4D1B529E3000DD2C58 /* UIFont+Lato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Lato.h"; path = "Vendor/LatoFont/UIFont+Lato.h"; sourceTree = "<group>"; };
 		DF74BF4E1B529E3000DD2C58 /* UIFont+Lato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Lato.m"; path = "Vendor/LatoFont/UIFont+Lato.m"; sourceTree = "<group>"; };
@@ -157,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF73A6DB1B52BF3600334BC8 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF73A6E01B52C60100334BC8 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +295,11 @@
 		DFC75F7E1B51C9110099833E = {
 			isa = PBXGroup;
 			children = (
+				DF73A6DF1B52C60100334BC8 /* HealthKit.framework */,
+				DF73A6DE1B52C5FF00334BC8 /* Balluun WatchKit Extension.entitlements */,
+				DF73A6DD1B52C5F000334BC8 /* Balluun WatchKit App.entitlements */,
+				DF73A6DC1B52BF3600334BC8 /* Balluun.entitlements */,
+				DF73A6DA1B52BF3600334BC8 /* HealthKit.framework */,
 				DF74BF321B5297B800DD2C58 /* Lato */,
 				3FF15FF81B51D120002D6470 /* Classes */,
 				DFC75F891B51C9120099833E /* iOS */,
@@ -438,12 +452,32 @@
 					DFC75F861B51C9110099833E = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 6T58EU7PS9;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					DFC75F9D1B51C9120099833E = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 6T58EU7PS9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					DFC75FAC1B51C9120099833E = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 6T58EU7PS9;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -667,10 +701,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Balluun WatchKit Extension/Balluun WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balluun WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -682,10 +720,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Balluun WatchKit Extension/Balluun WatchKit Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Balluun WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -697,10 +739,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Balluun WatchKit App/Balluun WatchKit App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				IBSC_MODULE = Balluun_WatchKit_Extension;
 				INFOPLIST_FILE = "Balluun WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -712,10 +758,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Balluun WatchKit App/Balluun WatchKit App.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				IBSC_MODULE = Balluun_WatchKit_Extension;
 				INFOPLIST_FILE = "Balluun WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = mn.ott.Balluun.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -727,6 +777,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Balluun/Balluun.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Balluun/Info.plist;
@@ -741,6 +792,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Balluun/Balluun.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Balluun/Info.plist;

@@ -177,15 +177,20 @@
             [[BLNManager sharedInstance] stopDefconState];
             break;
         }
+        case BLNAlertStatePanicked: {
+            break;
+        }
     }
 }
 
 #pragma mark - BLNManagerObserver
 - (void)manager:(BLNManager *)manager changedAlertStateTo:(BLNAlertState)alertState
 {
-    [self configureMapWithAlertState:alertState];
-    [self configureLevelLabelWithAlertState:alertState];
-    [self configureDefconButtonWithAlertState:alertState];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self configureMapWithAlertState:alertState];
+        [self configureLevelLabelWithAlertState:alertState];
+        [self configureDefconButtonWithAlertState:alertState];
+    });
 }
 
 @end
