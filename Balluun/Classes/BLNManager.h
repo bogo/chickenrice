@@ -50,6 +50,8 @@ extern NSString *const BLNManagerJSONActivityTypeKey;
 extern NSString *const BLNManagerJSONActivityConfidenceKey;
 extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 
+@protocol BLNManagerObserver;
+
 @interface BLNManager : NSObject <CLLocationManagerDelegate>
 
 @property (nonatomic, strong, readonly) NSURLSession *session;
@@ -76,5 +78,17 @@ extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 - (void)requestPermissions;
 
 - (void)login;
+
+#pragma mark - OBSERVE THINGS
+
+- (void)addObserver:(id<BLNManagerObserver>)observer;
+- (void)removeObserver:(id<BLNManagerObserver>)observer;
+
+@end
+
+@protocol BLNManagerObserver <NSObject>
+
+@optional
+- (void)manager:(BLNManager *)manager changedAlertStateFrom:(BLNAlertState)previousAlertState to:(BLNAlertState)alertState;
 
 @end

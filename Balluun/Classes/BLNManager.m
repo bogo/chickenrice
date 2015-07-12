@@ -32,6 +32,12 @@ NSString *const BLNManagerJSONActivityStartTimestampKey = @"startTimestamp";
 NSString *const BLNManagerJSONTimestampKey = @"timestamp";
 NSString *const BLNManagerJSONUserHashKey = @"user";
 
+@interface BLNManager ()
+
+@property (nonatomic, strong) NSHashTable *observers;
+
+@end
+
 @implementation BLNManager
 
 + (instancetype)sharedInstance
@@ -73,6 +79,7 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
         }];
         
         _loginState = BLNLoginStateLoggedOut;
+        _observers = [NSHashTable weakObjectsHashTable];
     }
     return self;
 }
@@ -100,25 +107,29 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
 
 - (void)setAlertState:(BLNAlertState)alertState
 {
-    if (_alertState != alertState)
+    if (_alertState == alertState)
     {
-        _alertState = alertState;
-        
-        if (_alertState == BLNAlertStateDEFCON)
-        {
-            self.locationManager.activityType = CLActivityTypeFitness;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-            self.locationManager.pausesLocationUpdatesAutomatically = NO;
-            [self.locationManager startUpdatingLocation];
-            [self.locationManager startUpdatingHeading];
+        return;
+    }
+    BLNAlertState oldAlertState = _alertState;
+    _alertState = alertState;
+    [self notifyObserversAboutAlertStateChangeFrom:oldAlertState
+                                                to:alertState];
+    
+    if (_alertState == BLNAlertStateDEFCON)
+    {
+        self.locationManager.activityType = CLActivityTypeFitness;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+        self.locationManager.pausesLocationUpdatesAutomatically = NO;
+        [self.locationManager startUpdatingLocation];
+        [self.locationManager startUpdatingHeading];
 
-        }
-        else
-        {
-            [self.locationManager stopUpdatingHeading];
-            [self.locationManager stopUpdatingLocation];
-            [self.locationManager startMonitoringSignificantLocationChanges];
-        }
+    }
+    else
+    {
+        [self.locationManager stopUpdatingHeading];
+        [self.locationManager stopUpdatingLocation];
+        [self.locationManager startMonitoringSignificantLocationChanges];
     }
 }
 
@@ -250,5 +261,37 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
     _loginState = BLNLoginStateLoggedIn;
 }
 
+#pragma mark - Observation
+
+- (void)addObserver:(id<BLNManagerObserver>)observer
+{
+    NSParameterAssert(observer != nil);
+    if (observer == nil) {
+        return;
+    }
+    [self.observers addObject:observer];
+}
+
+- (void)removeObserver:(id<BLNManagerObserver>)observer
+{
+    NSParameterAssert(observer != nil);
+    if (observer == nil) {
+        return;
+    }
+    
+    [self.observers removeObject:observer];
+}
+     
+- (void)notifyObserversAboutAlertStateChangeFrom:(BLNAlertState)previousAlertState to:(BLNAlertState)newAlertState
+{
+    for (id<BLNManagerObserver> observer in self.observers.allObjects) {
+        if (![observer respondsToSelector:@selector(manager:changedAlertStateFrom:to:)]) {
+            continue;
+        }
+        [observer manager:self
+    changedAlertStateFrom:previousAlertState
+                       to:newAlertState];
+    }
+}
 
 @end
