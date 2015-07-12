@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark - ENUM
+
 typedef NS_ENUM(NSUInteger, BLNAlertState) {
     BLNAlertStateGreen,
     BLNAlertStateOrange,
     BLNAlertStateRed,
     BLNAlertStateDEFCON
 };
+
+#pragma mark - JSON
 
 extern NSString *const BLNManagerJSONLocationKey;
 extern NSString *const BLNManagerJSONHeadingKey;
@@ -39,6 +43,13 @@ extern NSString *const BLNManagerJSONHeadingTimestampKey;
 extern NSString *const BLNManagerJSONActivityTypeKey;
 extern NSString *const BLNManagerJSONActivityConfidenceKey;
 extern NSString *const BLNManagerJSONActivityStartTimestampKey;
+
+extern NSString *const BLNManagerBalloonIndexKey;
+
+#pragma mark - Messaging
+
+extern NSString *const BLNMessageRequestLatestStateType;
+extern NSString *const BLNMessageUpdateCompliactionType;
 
 @interface BLNCommon : NSObject
 

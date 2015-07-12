@@ -8,6 +8,8 @@
 
 #import "BLNCommon.h"
 
+#pragma mark - JSON
+
 NSString *const BLNManagerJSONLocationKey = @"gps";
 NSString *const BLNManagerJSONLocationLatitudeKey = @"latitude";
 NSString *const BLNManagerJSONLocationLongitudeKey = @"longitude";
@@ -34,6 +36,11 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
 NSString *const BLNManagerJSONAlertStateKey = @"alert-state";
 
 NSString *const BLNManagerBalloonIndexKey = @"balloons";
+
+#pragma mark - Messages
+
+NSString *const BLNMessageRequestLatestStateType = @"latest-state-plz";
+NSString *const BLNMessageUpdateCompliactionType = @"update-complication-plz";
 
 NSString *const BLNManagerMessagePayloadTypeKey = @"type";
 NSString *const BLNManagerMessagePayloadDataKey = @"data";

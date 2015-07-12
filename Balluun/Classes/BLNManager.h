@@ -21,10 +21,6 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
     BLNLoginStateLoggedIn,
 };
 
-
-
-extern NSString *const BLNManagerBalloonIndexKey;
-
 @protocol BLNManagerObserver;
 
 @interface BLNManager : NSObject <CLLocationManagerDelegate, WCSessionDelegate>
@@ -39,11 +35,12 @@ extern NSString *const BLNManagerBalloonIndexKey;
 @property (nonatomic, strong, readonly) HKHealthStore *healthStore;
 
 //properties
-@property (nonatomic, assign, readonly) BLNAlertState alertState;
+@property (nonatomic, assign, readonly) BLNAlertState currentAlertState;
+@property (nonatomic, assign, readonly) BLNAlertState currentLocationScore;
+
 @property (nonatomic, copy, readonly) CMMotionActivity *currentActivity;
 @property (nonatomic, copy, readonly) CLLocation *currentLocation;
 @property (nonatomic, copy, readonly) CLHeading *currentHeading;
-@property (nonatomic, assign, readonly) BLNAlertState locationScore;
 
 @property (nonatomic, assign, readonly) BLNLoginState loginState;
 

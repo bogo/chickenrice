@@ -32,8 +32,8 @@
     self = [super init];
     if (self)
     {
-        _alertState = BLNAlertStateGreen;
-        _locationScore = BLNAlertStateGreen;
+        _currentAlertState = BLNAlertStateGreen;
+        _currentLocationScore = BLNAlertStateGreen;
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
         _queue = [[NSOperationQueue alloc] init];
         
@@ -88,24 +88,24 @@
 
 #pragma mark - Defcon
 
-- (void)setAlertState:(BLNAlertState)alertState
+- (void)setCurrentAlertState:(BLNAlertState)currentAlertState
 {
-    if (_alertState == alertState)
+    if (_currentAlertState == currentAlertState)
     {
         return;
     }
     
-    if (_alertState == BLNAlertStateDEFCON && alertState != BLNAlertStateGreen)
+    if (_currentAlertState == BLNAlertStateDEFCON && currentAlertState != BLNAlertStateGreen)
     {
         return;
     }
 
-    BLNAlertState oldAlertState = _alertState;
-    _alertState = alertState;
+    BLNAlertState oldAlertState = _currentAlertState;
+    _currentAlertState = currentAlertState;
     [self notifyObserversAboutAlertStateChangeFrom:oldAlertState
-                                                to:alertState];
+                                                to:currentAlertState];
     
-    if (_alertState == BLNAlertStateDEFCON)
+    if (_currentAlertState == BLNAlertStateDEFCON)
     {
         self.locationManager.activityType = CLActivityTypeFitness;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -124,14 +124,14 @@
 
 - (void)startDefconState
 {
-    [self setAlertState:BLNAlertStateDEFCON];
+    [self setCurrentAlertState:BLNAlertStateDEFCON];
     // tell watch app that we need to start a workout session
     
 }
 
 - (void)stopDefconState
 {
-    [self setAlertState:BLNAlertStateGreen];
+    [self setCurrentAlertState:BLNAlertStateGreen];
 }
 
 #pragma mark - Server based breadcrumb
@@ -191,7 +191,7 @@
         // include audio
     }
     
-    dict[BLNManagerJSONAlertStateKey] = @(self.alertState);
+    dict[BLNManagerJSONAlertStateKey] = @(self.currentAlertState);
     dict[BLNManagerJSONTimestampKey] = @([[NSDate date] timeIntervalSinceReferenceDate]);
     dict[BLNManagerJSONUserHashKey] = [[NSUUID UUID] UUIDString];
     
@@ -202,7 +202,7 @@
 
 - (void)updateWatch
 {
-    [self.watchSession transferCurrentComplicationUserInfo:@{BLNManagerBalloonIndexKey: @(self.alertState)}];
+    [self.watchSession transferCurrentComplicationUserInfo:@{BLNManagerBalloonIndexKey: @(self.currentLocationScore)}];
 }
 
 - (void)updateServer
@@ -323,13 +323,16 @@
 /** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message
 {
-    
 }
 
 /** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler
 {
-    
+    NSString *type = [BLNCommon typeForMessageUserInfo:message];
+    if ([type isEqualToString:BLNMessageRequestLatestStateType])
+    {
+        replyHandler(@{BLNManagerBalloonIndexKey: @(self.currentLocationScore)});
+    }
 }
 
 /** Called on the delegate of the receiver. Will be called on startup if the incoming message data caused the receiver to launch. */
