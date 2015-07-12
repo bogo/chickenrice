@@ -1,5 +1,6 @@
 #import "BLNAppDelegate.h"
 #import "BLNManager.h"
+#import "BLNLaunchViewController.h"
 
 @interface BLNAppDelegate ()
 
@@ -7,9 +8,14 @@
 
 @implementation BLNAppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+
+    self.window.rootViewController = [BLNLaunchViewController new];
+
     return YES;
 }
 
