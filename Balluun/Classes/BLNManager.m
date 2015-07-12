@@ -141,18 +141,14 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
     if (jsonData)
     {
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PANIC_URL]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PING_URL]];
         request.HTTPMethod = @"POST";
         request.HTTPBody = jsonData;
+        [request setAllHTTPHeaderFields:@{@"Content-Type": @"application/json"}];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
         
         [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
-            if (self.currentAlertState >= BLNAlertStateRed)
-            {
-                [self performSelector:@selector(updateServer) withObject:nil afterDelay:(self.currentAlertState == BLNAlertStateDEFCON) ? 15 : 45];
-            }
-            
-            if (!error)
+            if (error)
             {
                 NSLog(@"Error pinging server :( %@", error);
                 return;
@@ -160,7 +156,8 @@
             
             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            BLNAlertState locationScore = [[jsonDict objectForKey:@"score"] unsignedIntegerValue];
+            double serverScore = [[jsonDict objectForKey:@"score"] floatValue];
+            BLNAlertState locationScore = (NSUInteger)round(1.0 / BLNAlertStateRed / serverScore);
             
             if (locationScore != self.currentLocationScore)
             {
@@ -224,7 +221,7 @@
         type = (self.currentActivity.cycling) ? @"automative" : type;
         type = (self.currentActivity.cycling) ? @"cycling" : type;
         
-        dict[BLNManagerJSONActivityTypeKey] = type;
+        activityDict[BLNManagerJSONActivityTypeKey] = type;
         
         dict[BLNManagerJSONActivityKey] = activityDict;
     }
@@ -237,7 +234,7 @@
             dict[BLNManagerJSONBiometricHeartRateKey] = self.currentHeartRate;
         }
     }
-    
+
     if (state >= BLNAlertStateDEFCON)
     {
         // include audio
@@ -247,6 +244,7 @@
     {
         // include name
         dict[BLNManagerJSONUsernameKey] = @"Jason";
+        dict[BLNManagerJSONPhonenumberKey] = @"3479930638";
     }
     
     dict[BLNManagerJSONAlertStateKey] = @(self.currentAlertState);
@@ -276,6 +274,7 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:PING_URL]];
         request.HTTPMethod = @"POST";
         request.HTTPBody = jsonData;
+        [request setAllHTTPHeaderFields:@{@"Content-Type": @"application/json"}];
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
 
         [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
