@@ -13,6 +13,8 @@
 		3FF160051B522F7C002D6470 /* BLNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160031B522F7C002D6470 /* BLNCommon.m */; };
 		DF131CBE1B5209C00021A5D9 /* BLNBalloonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CBD1B5209C00021A5D9 /* BLNBalloonViewController.m */; };
 		DF131CC11B520D200021A5D9 /* BLNMetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CC01B520D200021A5D9 /* BLNMetaViewController.m */; };
+		DF131CC61B5215130021A5D9 /* BLNAlertState.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CC41B5215130021A5D9 /* BLNAlertState.m */; };
+		DF23C0D51B5231BA00A96598 /* BLNActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF23C0D41B5231BA00A96598 /* BLNActionButton.m */; };
 		DF5448D21B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */; };
 		DF5448D61B51DEF800AAFBE0 /* BLNWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D51B51DEF800AAFBE0 /* BLNWelcomeViewController.m */; };
 		DF5448DA1B51DF4500AAFBE0 /* UIColor+Balluun.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D91B51DF4500AAFBE0 /* UIColor+Balluun.m */; };
@@ -90,6 +92,10 @@
 		DF131CBD1B5209C00021A5D9 /* BLNBalloonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNBalloonViewController.m; sourceTree = "<group>"; };
 		DF131CBF1B520D200021A5D9 /* BLNMetaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNMetaViewController.h; sourceTree = "<group>"; };
 		DF131CC01B520D200021A5D9 /* BLNMetaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNMetaViewController.m; sourceTree = "<group>"; };
+		DF131CC41B5215130021A5D9 /* BLNAlertState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNAlertState.m; sourceTree = "<group>"; };
+		DF131CC51B5215130021A5D9 /* BLNAlertState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNAlertState.h; sourceTree = "<group>"; };
+		DF23C0D31B5231BA00A96598 /* BLNActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNActionButton.h; sourceTree = "<group>"; };
+		DF23C0D41B5231BA00A96598 /* BLNActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNActionButton.m; sourceTree = "<group>"; };
 		DF5448D01B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNOwnerSetupViewController.h; sourceTree = "<group>"; };
 		DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNOwnerSetupViewController.m; sourceTree = "<group>"; };
 		DF5448D41B51DEF800AAFBE0 /* BLNWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNWelcomeViewController.h; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 				3FF160001B52073C002D6470 /* BLNDirectReport.m */,
 				3FF160021B522F7C002D6470 /* BLNCommon.h */,
 				3FF160031B522F7C002D6470 /* BLNCommon.m */,
+				DF131CC51B5215130021A5D9 /* BLNAlertState.h */,
+				DF131CC41B5215130021A5D9 /* BLNAlertState.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -225,6 +233,8 @@
 		DF5448CE1B51CC7C00AAFBE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF23C0D31B5231BA00A96598 /* BLNActionButton.h */,
+				DF23C0D41B5231BA00A96598 /* BLNActionButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -464,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF23C0D51B5231BA00A96598 /* BLNActionButton.m in Sources */,
 				DF5449C11B51F52E00AAFBE0 /* BLNContactHelper.m in Sources */,
 				DF5449BE1B51F41100AAFBE0 /* BLNTrustedFriendsSetupViewController.m in Sources */,
 				DF131CC11B520D200021A5D9 /* BLNMetaViewController.m in Sources */,
@@ -477,6 +488,7 @@
 				DF5448DA1B51DF4500AAFBE0 /* UIColor+Balluun.m in Sources */,
 				DF5449C41B51FE3B00AAFBE0 /* BLNContactViewController.m in Sources */,
 				DF5448D61B51DEF800AAFBE0 /* BLNWelcomeViewController.m in Sources */,
+				DF131CC61B5215130021A5D9 /* BLNAlertState.m in Sources */,
 				DFC75F8C1B51C9120099833E /* main.m in Sources */,
 				DF5449CB1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m in Sources */,
 			);

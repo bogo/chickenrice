@@ -100,11 +100,9 @@
         return;
     }
 
-    BLNAlertState oldAlertState = _currentAlertState;
     _currentAlertState = currentAlertState;
-    [self notifyObserversAboutAlertStateChangeFrom:oldAlertState
-                                                to:currentAlertState];
-    
+    [self notifyObserversAboutAlertStateChangeTo:_currentAlertState];
+
     if (_currentAlertState == BLNAlertStateDEFCON)
     {
         self.locationManager.activityType = CLActivityTypeFitness;
@@ -289,15 +287,14 @@
     [self.observers removeObject:observer];
 }
      
-- (void)notifyObserversAboutAlertStateChangeFrom:(BLNAlertState)previousAlertState to:(BLNAlertState)newAlertState
+- (void)notifyObserversAboutAlertStateChangeTo:(BLNAlertState)newAlertState
 {
     for (id<BLNManagerObserver> observer in self.observers.allObjects) {
-        if (![observer respondsToSelector:@selector(manager:changedAlertStateFrom:to:)]) {
+        if (![observer respondsToSelector:@selector(manager:changedAlertStateTo:)]) {
             continue;
         }
         [observer manager:self
-    changedAlertStateFrom:previousAlertState
-                       to:newAlertState];
+      changedAlertStateTo:newAlertState];
     }
 }
 

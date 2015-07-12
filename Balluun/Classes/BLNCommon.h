@@ -7,15 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#pragma mark - ENUM
-
-typedef NS_ENUM(NSUInteger, BLNAlertState) {
-    BLNAlertStateGreen,
-    BLNAlertStateOrange,
-    BLNAlertStateRed,
-    BLNAlertStateDEFCON
-};
+#import "BLNAlertState.h"
 
 #pragma mark - JSON
 

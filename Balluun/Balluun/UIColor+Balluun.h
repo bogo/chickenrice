@@ -3,9 +3,10 @@
 @interface UIColor (Balluun)
 
 // DEFCON colors
-+ (UIColor *)bln_red;
-+ (UIColor *)bln_orange;
-+ (UIColor *)bln_green;
++ (UIColor *)bln_greenColor;
++ (UIColor *)bln_orangeColor;
++ (UIColor *)bln_redColor;
++ (UIColor *)bln_defconColor;
 
 // UI colors
 + (UIColor *)bln_buttonColor;
