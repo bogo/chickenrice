@@ -1,5 +1,5 @@
 #import "NotificationController.h"
-
+#import "BLNDirectReport.h"
 
 @interface NotificationController()
 
@@ -29,6 +29,14 @@
 {
     // This method is called when watch view controller is no longer visible
     [super didDeactivate];
+}
+
+- (void)handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(nonnull UILocalNotification *)localNotification
+{
+    if ([identifier isEqualToString:@"notokay"])
+    {
+        [[BLNDirectReport sharedInstance] panic];
+    }
 }
 
 /*

@@ -439,6 +439,15 @@
     
     if ([type isEqualToString:BLNMessageCheerioType])
     {
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.fireDate = [[NSDate date] dateByAddingTimeInterval:30];
+        notification.alertTitle = @"Panic";
+        notification.alertBody = @"Are you sure you want to come out of panic mode?";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.category = @"reassurance";
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        
         [self setCurrentAlertState:BLNAlertStateGreen];
         NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
