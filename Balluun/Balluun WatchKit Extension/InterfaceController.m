@@ -47,7 +47,7 @@
     if (state >= BLNAlertStateDEFCON)
     {
         color = [BLNAlertStateHelper colorFromAlertState:BLNAlertStateDEFCON];
-        subtitleString = @"Tracking";
+        subtitleString = (state == BLNAlertStatePanicked) ? @"Panic" : @"Tracking";
     }
     else
     {
@@ -69,8 +69,16 @@
 
 - (IBAction)alertButtonTapped
 {
-    [[BLNDirectReport sharedInstance] startDefconState];
-    [self updateUserInterfaceWithState:BLNAlertStateDEFCON];
+    if ([[BLNDirectReport sharedInstance] currentAlertState] < BLNAlertStateDEFCON)
+    {
+        [[BLNDirectReport sharedInstance] startDefconState];
+        [self updateUserInterfaceWithState:BLNAlertStateDEFCON];
+    }
+    else if ([[BLNDirectReport sharedInstance] currentAlertState] == BLNAlertStateDEFCON)
+    {
+        [[BLNDirectReport sharedInstance] panic];
+        [self updateUserInterfaceWithState:BLNAlertStatePanicked];
+    }
     
 }
 
