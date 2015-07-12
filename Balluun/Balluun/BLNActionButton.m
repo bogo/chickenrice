@@ -1,4 +1,5 @@
 #import "BLNActionButton.h"
+#import "UIColor+Balluun.h"
 
 @implementation BLNActionButton
 
@@ -28,12 +29,12 @@
 
 - (UIColor *)borderColorForState:(UIControlState)state
 {
-    return [UIColor greenColor];
+    return [UIColor bln_redColor];
 }
 
 - (UIColor *)backgroundColorForState:(UIControlState)state
 {
-    return [UIColor redColor];
+    return [UIColor bln_redColor];
 }
 
 @end

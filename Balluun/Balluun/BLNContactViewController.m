@@ -1,16 +1,9 @@
 #import "BLNOwnerSetupViewController.h"
 #import "BLNContactHelper.h"
+#import "UIView+NSLayoutConstraint.h"
 
 @import Contacts;
 @import ContactsUI;
-
-@interface UIView (NSLayoutConstraints)
-
-- (void)addConstraintsFromVisualFormatStrings:(NSArray *)strings
-                                      metrics:(NSDictionary *)metrics
-                                        views:(NSDictionary *)views;
-
-@end
 
 @interface BLNContactViewController ()
 
@@ -84,28 +77,6 @@
 - (void)acceptContact
 {
     NSAssert(NO, @"You need to override this method in your subclass");
-}
-
-@end
-
-@implementation UIView (NSLayoutConstraint)
-
-- (void)addConstraintsFromVisualFormatStrings:(NSArray *)strings
-                                      metrics:(NSDictionary *)metrics
-                                        views:(NSDictionary *)views
-{
-    for (UIView *view in views.allValues) {
-        view.translatesAutoresizingMaskIntoConstraints = NO;
-    }
-    
-    NSMutableArray<NSLayoutConstraint *> *constraints = @[ ].mutableCopy;
-    for (NSString *formatString in strings) {
-        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:formatString
-                                                                                 options:0
-                                                                                 metrics:metrics
-                                                                                   views:views]];
-    }
-    [self addConstraints:constraints];
 }
 
 @end
