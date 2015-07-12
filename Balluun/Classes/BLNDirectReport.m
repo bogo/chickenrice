@@ -240,6 +240,11 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
 
 - (void)requestLatestState
 {
+    if (self.watchSession.applicationContext)
+    {
+        [self updateCurrentStateWithReplyMessage:self.watchSession.applicationContext];
+    }
+    
     if (self.watchSession.isReachable)
     {
         [self.watchSession sendMessage:[BLNCommon messageUserInfoForType:BLNMessageRequestLatestStateType payload:nil] replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
@@ -264,6 +269,11 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
         [(NSMutableSet *)self.ballonIndexItems addObject:[[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:data]];
         _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];   
     }
+}
+
+- (void)session:(nonnull WCSession *)session didReceiveApplicationContext:(nonnull NSDictionary<NSString *,id> *)applicationContext
+{
+    [self updateCurrentStateWithReplyMessage:applicationContext];
 }
 
 @end

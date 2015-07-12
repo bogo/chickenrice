@@ -128,7 +128,8 @@
 
 - (void)startDefconState
 {
-    [self setCurrentAlertState:BLNAlertStateDEFCON];    
+    [self setCurrentAlertState:BLNAlertStateDEFCON];
+    [self updateWatch];
 }
 
 - (void)panic
@@ -177,6 +178,7 @@
 - (void)stopDefconState
 {
     [self setCurrentAlertState:BLNAlertStateGreen];
+    [self updateWatch];
 }
 
 #pragma mark - Server based breadcrumb
@@ -258,9 +260,9 @@
 
 - (void)updateWatch
 {
-    NSDictionary *context = @{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
-    [self.watchSession updateApplicationContext:context error:nil];
-    [self.watchSession transferCurrentComplicationUserInfo:context];
+    NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
+    [self.watchSession updateApplicationContext:currentState error:nil];
+    [self.watchSession transferCurrentComplicationUserInfo:currentState];
 }
 
 - (void)updateServer
