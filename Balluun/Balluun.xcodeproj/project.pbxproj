@@ -39,12 +39,12 @@
 		DFC75F9A1B51C9120099833E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFC75F981B51C9120099833E /* LaunchScreen.storyboard */; };
 		DFC75F9F1B51C9120099833E /* Balluun WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */; };
 		DFC75FA51B51C9120099833E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FA31B51C9120099833E /* Interface.storyboard */; };
-		DFC75FA71B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FA61B51C9120099833E /* Assets.xcassets */; };
+		DFC75FA71B51C9120099833E /* WatchKit App Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FA61B51C9120099833E /* WatchKit App Assets.xcassets */; };
 		DFC75FAE1B51C9120099833E /* Balluun WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB51B51C9120099833E /* InterfaceController.m */; };
 		DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB81B51C9120099833E /* ExtensionDelegate.m */; };
 		DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FBB1B51C9120099833E /* NotificationController.m */; };
-		DFC75FC11B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FC01B51C9120099833E /* Assets.xcassets */; };
+		DFC75FC11B51C9120099833E /* WatchKit Exension Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FC01B51C9120099833E /* WatchKit Exension Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +145,7 @@
 		DFC75F9B1B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC75F9E1B51C9120099833E /* Balluun WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Balluun WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC75FA41B51C9120099833E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		DFC75FA61B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFC75FA61B51C9120099833E /* WatchKit App Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "WatchKit App Assets.xcassets"; sourceTree = "<group>"; };
 		DFC75FA81B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFC75FAD1B51C9120099833E /* Balluun WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Balluun WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC75FB31B51C9120099833E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		DFC75FB81B51C9120099833E /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
 		DFC75FBA1B51C9120099833E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		DFC75FBB1B51C9120099833E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
-		DFC75FC01B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DFC75FC01B51C9120099833E /* WatchKit Exension Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "WatchKit Exension Assets.xcassets"; sourceTree = "<group>"; };
 		DFC75FC21B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,6 +282,25 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		DF73A6E11B52D66B00334BC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF73A6DF1B52C60100334BC8 /* HealthKit.framework */,
+				DF73A6DA1B52BF3600334BC8 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF73A6E21B52D67000334BC8 /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				DF73A6DE1B52C5FF00334BC8 /* Balluun WatchKit Extension.entitlements */,
+				DF73A6DD1B52C5F000334BC8 /* Balluun WatchKit App.entitlements */,
+				DF73A6DC1B52BF3600334BC8 /* Balluun.entitlements */,
+			);
+			name = Entitlements;
+			sourceTree = "<group>";
+		};
 		DF74BF321B5297B800DD2C58 /* Lato */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,16 +314,13 @@
 		DFC75F7E1B51C9110099833E = {
 			isa = PBXGroup;
 			children = (
-				DF73A6DF1B52C60100334BC8 /* HealthKit.framework */,
-				DF73A6DE1B52C5FF00334BC8 /* Balluun WatchKit Extension.entitlements */,
-				DF73A6DD1B52C5F000334BC8 /* Balluun WatchKit App.entitlements */,
-				DF73A6DC1B52BF3600334BC8 /* Balluun.entitlements */,
-				DF73A6DA1B52BF3600334BC8 /* HealthKit.framework */,
 				DF74BF321B5297B800DD2C58 /* Lato */,
 				3FF15FF81B51D120002D6470 /* Classes */,
 				DFC75F891B51C9120099833E /* iOS */,
 				DFC75FA21B51C9120099833E /* WatchKit App */,
 				DFC75FB11B51C9120099833E /* WatchKit Extension */,
+				DF73A6E11B52D66B00334BC8 /* Frameworks */,
+				DF73A6E21B52D67000334BC8 /* Entitlements */,
 				DFC75F881B51C9120099833E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -349,7 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC75FA31B51C9120099833E /* Interface.storyboard */,
-				DFC75FA61B51C9120099833E /* Assets.xcassets */,
+				DFC75FA61B51C9120099833E /* WatchKit App Assets.xcassets */,
 				DFC75FA81B51C9120099833E /* Info.plist */,
 			);
 			name = "WatchKit App";
@@ -367,7 +383,7 @@
 				DFC75FBB1B51C9120099833E /* NotificationController.m */,
 				3F9351D21B525F3D0026CF0C /* ComplicationController.h */,
 				3F9351D31B525F3D0026CF0C /* ComplicationController.m */,
-				DFC75FC01B51C9120099833E /* Assets.xcassets */,
+				DFC75FC01B51C9120099833E /* WatchKit Exension Assets.xcassets */,
 				DFC75FC21B51C9120099833E /* Info.plist */,
 				DFC75FB21B51C9120099833E /* Supporting Files */,
 			);
@@ -517,7 +533,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFC75FA71B51C9120099833E /* Assets.xcassets in Resources */,
+				DFC75FA71B51C9120099833E /* WatchKit App Assets.xcassets in Resources */,
 				DFC75FA51B51C9120099833E /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,7 +542,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFC75FC11B51C9120099833E /* Assets.xcassets in Resources */,
+				DFC75FC11B51C9120099833E /* WatchKit Exension Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
