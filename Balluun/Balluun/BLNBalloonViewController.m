@@ -38,11 +38,11 @@
 {
     [super viewDidLoad];
     
-    self.mapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
     [self.view addSubview:self.mapView];
     
-    self.maskView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.maskView = [[UIView alloc] initWithFrame:CGRectZero];
     [self setupMapView];
     [self.view addSubview:self.maskView];
 
@@ -52,7 +52,11 @@
     [self.view addSubview:self.promptLabel];
     [self.view addSubview:self.levelLabel];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(_mapView, _maskView, _promptLabel, _levelLabel);
+    self.defconButton = [[BLNActionButton alloc] initWithFrame:CGRectZero];
+    [self setupDefconButton];
+    [self.view addSubview:self.defconButton];
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(_mapView, _maskView, _promptLabel, _levelLabel, _defconButton);
     
     [self.view addConstraintsFromVisualFormatStrings:@[
                                                        @"H:|-[_mapView]-|",
@@ -61,14 +65,12 @@
                                                        @"V:|-[_maskView]|",
                                                        @"H:|-[_promptLabel]-|",
                                                        @"H:|-[_levelLabel]-|",
-                                                       @"V:|-[_promptLabel]-[_levelLabel]"
+                                                       @"V:|-[_promptLabel]-[_levelLabel]",
+                                                       @"H:|-[_defconButton]-|",
+                                                       @"V:[_defconButton]-|",
                                                        ]
                                              metrics:nil
                                                views:views];
-    
-    self.defconButton = [[BLNActionButton alloc] initWithFrame:CGRectMake(0, 100, 100, 100)];
-    [self setupDefconButton];
-    [self.view addSubview:self.defconButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated
