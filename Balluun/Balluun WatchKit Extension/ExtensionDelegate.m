@@ -1,10 +1,12 @@
 #import "ExtensionDelegate.h"
+#import "BLNDirectReport.h"
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching
 {
     // Perform any final initialization of your application.
+    [BLNDirectReport sharedInstance];
 }
 
 - (void)applicationDidBecomeActive

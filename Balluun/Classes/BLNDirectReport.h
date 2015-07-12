@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WatchConnectivity/WatchConnectivity.h>
+#import <ClockKit/ClockKit.h>
 
-@interface BLNDirectReport : NSObject
+@interface BLNDirectReport : NSObject <WCSessionDelegate, CLKComplicationDataSource>
+
+@property (nonatomic, readonly, strong) WCSession *watchSession;
 
 + (instancetype)sharedInstance;
 

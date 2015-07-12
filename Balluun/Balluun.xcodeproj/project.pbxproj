@@ -32,7 +32,6 @@
 		DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB51B51C9120099833E /* InterfaceController.m */; };
 		DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FB81B51C9120099833E /* ExtensionDelegate.m */; };
 		DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FBB1B51C9120099833E /* NotificationController.m */; };
-		DFC75FBF1B51C9120099833E /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75FBE1B51C9120099833E /* ComplicationController.m */; };
 		DFC75FC11B51C9120099833E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC75FC01B51C9120099833E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -126,8 +125,6 @@
 		DFC75FB81B51C9120099833E /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
 		DFC75FBA1B51C9120099833E /* NotificationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationController.h; sourceTree = "<group>"; };
 		DFC75FBB1B51C9120099833E /* NotificationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationController.m; sourceTree = "<group>"; };
-		DFC75FBD1B51C9120099833E /* ComplicationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComplicationController.h; sourceTree = "<group>"; };
-		DFC75FBE1B51C9120099833E /* ComplicationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComplicationController.m; sourceTree = "<group>"; };
 		DFC75FC01B51C9120099833E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFC75FC21B51C9120099833E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,8 +293,6 @@
 				DFC75FB81B51C9120099833E /* ExtensionDelegate.m */,
 				DFC75FBA1B51C9120099833E /* NotificationController.h */,
 				DFC75FBB1B51C9120099833E /* NotificationController.m */,
-				DFC75FBD1B51C9120099833E /* ComplicationController.h */,
-				DFC75FBE1B51C9120099833E /* ComplicationController.m */,
 				DFC75FC01B51C9120099833E /* Assets.xcassets */,
 				DFC75FC21B51C9120099833E /* Info.plist */,
 				DFC75FB21B51C9120099833E /* Supporting Files */,
@@ -469,7 +464,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */,
-				DFC75FBF1B51C9120099833E /* ComplicationController.m in Sources */,
 				3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */,
 				DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */,
 				DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */,
