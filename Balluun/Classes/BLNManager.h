@@ -72,5 +72,6 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 
 @optional
 - (void)manager:(BLNManager *)manager changedAlertStateTo:(BLNAlertState)alertState;
+- (void)manager:(BLNManager *)manager changedBPMTo:(double)bpm;
 
 @end

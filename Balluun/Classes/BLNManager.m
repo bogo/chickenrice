@@ -35,7 +35,7 @@
     self = [super init];
     if (self)
     {
-        _name = @"Jason";
+        _name = @"Ola";
         _phoneNumber = @"3479930638";
         
         _currentAlertState = BLNAlertStateGreen;
@@ -381,6 +381,16 @@
     }
 }
 
+- (void)notifyObserversAboutBPMChangeTo:(double)bpm
+{
+    for (id<BLNManagerObserver> observer in self.observers.allObjects) {
+        if (![observer respondsToSelector:@selector(manager:changedBPMTo:)]) {
+            continue;
+        }
+        [observer manager:self changedBPMTo:bpm];
+    }
+}
+
 #pragma mark - Watch
 
 - (BOOL)isWatchReady
@@ -426,6 +436,7 @@
         _currentHeartRate = [latestSample objectForKey:BLMMessageBiometricHeartRateKey];
         NSLog(@"HELLO HEARTBEAT! %@", payload);
         [self updateServer];
+        [self notifyObserversAboutBPMChangeTo:[self.currentHeartRate doubleValue]];
         NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
