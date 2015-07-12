@@ -100,6 +100,8 @@
     {
         return;
     }
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
 
     _currentAlertState = currentAlertState;
     [self notifyObserversAboutAlertStateChangeTo:_currentAlertState];
@@ -221,7 +223,14 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@""]];
         request.HTTPMethod = @"POST";
         request.HTTPBody = jsonData;
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateServer) object:nil];
+
         [[self.session dataTaskWithRequest:request completionHandler:^(NSData * __nullable data, NSURLResponse * __nullable response, NSError * __nullable error) {
+            if (self.currentAlertState >= BLNAlertStateRed)
+            {
+                [self performSelector:@selector(updateServer) withObject:nil afterDelay:(self.currentAlertState == BLNAlertStateDEFCON) ? 15 : 45];
+            }
+            
             if (!error)
             {
                 NSLog(@"Error pinging server :( %@", error);
