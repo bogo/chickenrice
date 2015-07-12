@@ -15,6 +15,7 @@
 		DF131CC11B520D200021A5D9 /* BLNMetaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CC01B520D200021A5D9 /* BLNMetaViewController.m */; };
 		DF131CC61B5215130021A5D9 /* BLNAlertState.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CC41B5215130021A5D9 /* BLNAlertState.m */; };
 		DF23C0D51B5231BA00A96598 /* BLNActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF23C0D41B5231BA00A96598 /* BLNActionButton.m */; };
+		DF23C17B1B5245E800A96598 /* UIView+NSLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = DF23C17A1B5245E800A96598 /* UIView+NSLayoutConstraint.m */; };
 		DF5448D21B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */; };
 		DF5448D61B51DEF800AAFBE0 /* BLNWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D51B51DEF800AAFBE0 /* BLNWelcomeViewController.m */; };
 		DF5448DA1B51DF4500AAFBE0 /* UIColor+Balluun.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D91B51DF4500AAFBE0 /* UIColor+Balluun.m */; };
@@ -96,6 +97,8 @@
 		DF131CC51B5215130021A5D9 /* BLNAlertState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNAlertState.h; sourceTree = "<group>"; };
 		DF23C0D31B5231BA00A96598 /* BLNActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNActionButton.h; sourceTree = "<group>"; };
 		DF23C0D41B5231BA00A96598 /* BLNActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNActionButton.m; sourceTree = "<group>"; };
+		DF23C1791B5245E800A96598 /* UIView+NSLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NSLayoutConstraint.h"; sourceTree = "<group>"; };
+		DF23C17A1B5245E800A96598 /* UIView+NSLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NSLayoutConstraint.m"; sourceTree = "<group>"; };
 		DF5448D01B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNOwnerSetupViewController.h; sourceTree = "<group>"; };
 		DF5448D11B51DEDE00AAFBE0 /* BLNOwnerSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNOwnerSetupViewController.m; sourceTree = "<group>"; };
 		DF5448D41B51DEF800AAFBE0 /* BLNWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNWelcomeViewController.h; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 			children = (
 				DF5448D81B51DF4500AAFBE0 /* UIColor+Balluun.h */,
 				DF5448D91B51DF4500AAFBE0 /* UIColor+Balluun.m */,
+				DF23C1791B5245E800A96598 /* UIView+NSLayoutConstraint.h */,
+				DF23C17A1B5245E800A96598 /* UIView+NSLayoutConstraint.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF23C17B1B5245E800A96598 /* UIView+NSLayoutConstraint.m in Sources */,
 				DF23C0D51B5231BA00A96598 /* BLNActionButton.m in Sources */,
 				DF5449C11B51F52E00AAFBE0 /* BLNContactHelper.m in Sources */,
 				DF5449BE1B51F41100AAFBE0 /* BLNTrustedFriendsSetupViewController.m in Sources */,
