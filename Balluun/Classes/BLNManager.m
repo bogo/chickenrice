@@ -292,7 +292,8 @@
             
             NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             
-            BLNAlertState locationScore = [[jsonDict objectForKey:@"score"] unsignedIntegerValue];
+            double serverScore = [[jsonDict objectForKey:@"score"] floatValue];
+            BLNAlertState locationScore = (NSUInteger)round(1.0 / BLNAlertStateRed / serverScore);
             
             if (locationScore != self.currentLocationScore)
             {
