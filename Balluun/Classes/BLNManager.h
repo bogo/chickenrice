@@ -50,6 +50,8 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 - (void)startDefconState;
 - (void)stopDefconState;
 - (void)requestPermissions;
+- (void)updateWatch;
+- (void)updateServer;
 
 - (void)login;
 
