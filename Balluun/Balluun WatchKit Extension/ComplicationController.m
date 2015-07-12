@@ -6,6 +6,8 @@
 //  Copyright © 2015 Ottoman. All rights reserved.
 //
 
+#import <WatchKit/WatchKit.h>
+
 #import "ComplicationController.h"
 #import "BLNDirectReport.h"
 
@@ -90,7 +92,7 @@
 - (void)getNextRequestedUpdateDateWithHandler:(void(^)(__nullable NSDate *updateDate))handler
 {
     // Call the handler with the date when you would next like to be given the opportunity to update your complication content
-    handler([[NSDate date] dateByAddingTimeInterval:(3 * 60)]);
+    handler([[NSDate date] dateByAddingTimeInterval:1]);
 }
 
 #pragma mark - Placeholder Templates
