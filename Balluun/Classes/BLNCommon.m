@@ -31,6 +31,8 @@ NSString *const BLNManagerJSONActivityTypeKey = @"type";
 NSString *const BLNManagerJSONActivityConfidenceKey = @"confidence";
 NSString *const BLNManagerJSONActivityStartTimestampKey = @"startTimestamp";
 
+NSString *const BLNManagerJSONBiometricHeartRateKey = @"heart-rate";
+
 NSString *const BLNManagerJSONTimestampKey = @"timestamp";
 NSString *const BLNManagerJSONUserHashKey = @"user";
 NSString *const BLNManagerJSONAlertStateKey = @"alert-state";
@@ -39,6 +41,9 @@ NSString *const BLNManagerBalloonIndexKey = @"balloons";
 
 #pragma mark - Messages
 
+NSString *const BLNMessagePANICINTHEDISCOType = @"panic!";
+NSString *const BLNMessageCheerioType = @"phew!";
+NSString *const BLNMessageBiometricsUpdateType = @"biometric-update";
 NSString *const BLNMessageRequestLatestStateType = @"latest-state-plz";
 NSString *const BLNMessageUpdateComplicationType = @"update-complication-plz";
 NSString *const BLNMessageTimeStampKey = @"timestamp";
@@ -46,6 +51,10 @@ NSString *const BLNMessageTimeStampKey = @"timestamp";
 NSString *const BLNManagerMessagePayloadTypeKey = @"type";
 NSString *const BLNManagerMessagePayloadDataKey = @"data";
 
+NSString *const BLMMessageBiometericSamplesKey = @"samples";
+NSString *const BLMMessageBiometricHeartRateKey = @"heart-rate";
+NSString *const BLMMessageBiometricStartDateKey = @"biometric-start-date";
+NSString *const BLMMessageBiometricEndDateKey = @"biometric-end-date";
 
 @implementation BLNCommon
 

@@ -43,8 +43,11 @@
 }
 @end
 
-@interface BLNDirectReport ()
-
+@interface BLNDirectReport () <HKWorkoutSessionDelegate>
+@property (nonatomic, strong) HKAnchoredObjectQuery *panicSessionBiometricQuery;
+@property (nonatomic, strong) NSDate *panicSessionStartDate;
+@property (nonatomic, strong) HKWorkoutSession *panicSession;
+@property (nonatomic, strong) HKHealthStore *healthStore;
 @end
 
 @implementation BLNDirectReport
@@ -68,12 +71,114 @@
         _watchSession.delegate = self;
         [_watchSession activateSession];
         
+        _healthStore = [[HKHealthStore alloc] init];
+        
         _ballonIndexItems = [NSMutableSet setWithCapacity:0];
     }
     return self;
 }
 
+#pragma mark - Workout (ahahahaha)
+
+- (void)workoutSession:(nonnull HKWorkoutSession *)workoutSession didFailWithError:(nonnull NSError *)error
+{
+    
+}
+
+- (void)workoutSession:(nonnull HKWorkoutSession *)workoutSession didChangeToState:(HKWorkoutSessionState)toState fromState:(HKWorkoutSessionState)fromState date:(nonnull NSDate *)date
+{
+    switch (toState) {
+        case HKWorkoutSessionStateRunning:
+        {
+            _panicSessionStartDate = date;
+            
+            HKSampleType *sampleType = [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeartRate];
+            _panicSessionBiometricQuery = [[HKAnchoredObjectQuery alloc] initWithType:sampleType predicate:nil anchor:HKAnchoredObjectQueryNoAnchor limit:HKObjectQueryNoLimit resultsHandler:^(HKAnchoredObjectQuery * __nonnull query, NSArray<__kindof HKSample *> * __nullable sampleObjects, NSArray<HKDeletedObject *> * __nullable deletedObjects, NSInteger newAnchor, NSError * __nullable error) {
+                if (!sampleObjects)
+                {
+                    return;
+                }
+                
+                NSMutableArray *samples = [NSMutableArray arrayWithCapacity:[sampleObjects count]];
+                
+                for (HKSample *sample in sampleObjects)
+                {
+                    if ([sample isKindOfClass:[HKQuantitySample class]])
+                    {
+                        HKQuantitySample *heartBeatSample = (HKQuantitySample *)sample;
+                        
+                        // bpm
+                        double bpm = [[heartBeatSample quantity] doubleValueForUnit:[[HKUnit countUnit] unitDividedByUnit:[HKUnit minuteUnit]]];
+                        [samples addObject:@{BLMMessageBiometricHeartRateKey: @(bpm),
+                                             BLMMessageBiometricStartDateKey: @([heartBeatSample.startDate timeIntervalSinceReferenceDate]),
+                                             BLMMessageBiometricEndDateKey: @([heartBeatSample.endDate timeIntervalSinceReferenceDate])}];
+                    }
+                }
+                
+                NSDictionary *messageDictionary = [BLNCommon messageUserInfoForType:BLNMessageBiometricsUpdateType payload:@{BLMMessageBiometericSamplesKey: samples}];
+                [self.watchSession sendMessage:messageDictionary replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
+                    NSLog(@"Successfully sent biometeric update!");
+                } errorHandler:^(NSError * __nonnull error) {
+                    NSLog(@"Error sending biometric update: %@", error);
+                }];
+            }];
+            
+            [self.healthStore executeQuery:self.panicSessionBiometricQuery];
+            
+        }
+            break;
+        case HKWorkoutSessionStateEnded:
+            [self.healthStore stopQuery:self.panicSessionBiometricQuery];
+            _panicSession = nil;
+            _panicSessionBiometricQuery = nil;
+            break;
+            
+        case HKWorkoutSessionStateNotStarted:
+        default:
+            break;
+    }
+}
+
 #pragma mark - State
+
+- (void)startDefconState
+{
+    _panicSession = [[HKWorkoutSession alloc] initWithActivityType:HKWorkoutActivityTypeWalking locationType:HKWorkoutSessionLocationTypeOutdoor];
+    _panicSession.delegate = self;
+    
+    [self.healthStore startWorkoutSession:self.panicSession completion:^(BOOL success, NSError * __nullable error) {
+        if (success)
+        {
+            NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessagePANICINTHEDISCOType payload:nil];
+            [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
+                
+            } errorHandler:^(NSError * __nonnull error) {
+                
+            }];
+        }
+        else
+        {
+            NSLog(@"Unable to start workout session: %@", error);
+        }
+    }];
+}
+
+- (void)stopDefconState
+{
+    if (self.panicSession)
+    {
+        [self.healthStore stopWorkoutSession:self.panicSession completion:^(BOOL success, NSError * __nullable error) {
+            
+        }];
+    }
+    
+    NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessageCheerioType payload:nil];
+    [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
+        
+    } errorHandler:^(NSError * __nonnull error) {
+        
+    }];
+}
 
 - (BLNAlertState)currentLocationScore
 {

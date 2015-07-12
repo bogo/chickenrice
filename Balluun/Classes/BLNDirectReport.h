@@ -22,6 +22,8 @@
 + (instancetype)sharedInstance;
 
 - (void)requestLatestState;
+- (void)startDefconState;
+- (void)stopDefconState;
 
 @end
 

@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 @property (nonatomic, assign, readonly) BLNAlertState currentLocationScore;
 @property (nonatomic, copy, readonly) NSDate *currentLocationScoreTimestamp;
 
+@property (nonatomic, copy, readonly) NSNumber *currentHeartRate;
 @property (nonatomic, copy, readonly) CMMotionActivity *currentActivity;
 @property (nonatomic, copy, readonly) CLLocation *currentLocation;
 @property (nonatomic, copy, readonly) CLHeading *currentHeading;

@@ -180,9 +180,13 @@
         dict[BLNManagerJSONActivityKey] = activityDict;
     }
     
-    if (state == BLNAlertStateRed)
+    if (state >= BLNAlertStateRed)
     {
         // include heartrate
+        if (self.currentHeartRate)
+        {
+            dict[BLNManagerJSONBiometricHeartRateKey] = self.currentHeartRate;
+        }
     }
     
     if (state == BLNAlertStateDEFCON)
@@ -201,12 +205,14 @@
 
 - (void)updateWatch
 {
-    [self.watchSession transferCurrentComplicationUserInfo:@{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])}];
+    NSDictionary *context = @{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
+    [self.watchSession updateApplicationContext:context error:nil];
+    [self.watchSession transferCurrentComplicationUserInfo:context];
 }
 
 - (void)updateServer
 {
-    NSDictionary *dict = [self JSONDictionaryForState:BLNAlertStateGreen];
+    NSDictionary *dict = [self JSONDictionaryForState:self.currentAlertState];
     
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:&error];
@@ -222,7 +228,9 @@
                 return;
             }
             
-            BLNAlertState locationScore = nil;
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            
+            BLNAlertState locationScore = [[jsonDict objectForKey:@"score"] unsignedIntegerValue];
             
             if (locationScore != self.currentLocationScore)
             {
@@ -328,15 +336,35 @@
 /** Called on the delegate of the receiver. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message
 {
+    NSAssert(NO, @"WE SHOULD ALWAYS HAVE A REPLY HANDLER!");
 }
 
 /** Called on the delegate of the receiver when the sender sends a message that expects a reply. Will be called on startup if the incoming message caused the receiver to launch. */
 - (void)session:(WCSession *)session didReceiveMessage:(NSDictionary<NSString *, id> *)message replyHandler:(void(^)(NSDictionary<NSString *, id> *replyMessage))replyHandler
 {
     NSString *type = [BLNCommon typeForMessageUserInfo:message];
+    NSDictionary *payload = [BLNCommon payloadForMessageUserInfo:message];
     if ([type isEqualToString:BLNMessageRequestLatestStateType])
     {
         replyHandler(@{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])});
+    }
+    
+    if ([type isEqualToString:BLNMessageBiometricsUpdateType])
+    {
+        NSDictionary *latestSample = [[payload objectForKey:BLMMessageBiometericSamplesKey] lastObject];
+        _currentHeartRate = [latestSample objectForKey:BLMMessageBiometricHeartRateKey];
+        [self updateServer];
+        replyHandler(nil);
+    }
+    
+    if ([type isEqualToString:BLNMessagePANICINTHEDISCOType])
+    {
+        [self setCurrentAlertState:BLNAlertStateDEFCON];
+    }
+    
+    if ([type isEqualToString:BLNMessageCheerioType])
+    {
+        [self setCurrentAlertState:BLNAlertStateGreen];
     }
 }
 
@@ -369,18 +397,6 @@
 
 /** Called on the delegate of the receiver. Will be called on startup if the user info finished transferring when the receiver was not running. */
 - (void)session:(WCSession *)session didReceiveUserInfo:(NSDictionary<NSString *, id> *)userInfo
-{
-    
-}
-
-/** Called on the sending side after the file transfer has successfully completed or failed with an error. Will be called on next launch if the sender was not running when the transfer finished. */
-- (void)session:(WCSession *)session didFinishFileTransfer:(WCSessionFileTransfer *)fileTransfer error:(nullable NSError *)error
-{
-    
-}
-
-/** Called on the delegate of the receiver. Will be called on startup if the file finished transferring when the receiver was not running. The incoming file will be located in the Documents/Inbox/ folder when being delivered. The receiver must take ownership of the file by moving it to another location. The system will remove any content that has not been moved when this delegate method returns. */
-- (void)session:(WCSession *)session didReceiveFile:(WCSessionFile *)file
 {
     
 }

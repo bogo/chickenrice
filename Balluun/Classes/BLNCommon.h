@@ -36,13 +36,25 @@ extern NSString *const BLNManagerJSONActivityTypeKey;
 extern NSString *const BLNManagerJSONActivityConfidenceKey;
 extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 
+extern NSString *const BLNManagerJSONBiometricHeartRateKey;
+
 extern NSString *const BLNManagerBalloonIndexKey;
 
 #pragma mark - Messaging
 
 extern NSString *const BLNMessageRequestLatestStateType;
 extern NSString *const BLNMessageUpdateComplicationType;
+extern NSString *const BLNMessagePANICINTHEDISCOType;
+extern NSString *const BLNMessageCheerioType;
+extern NSString *const BLNMessageBiometricsUpdateType;
 extern NSString *const BLNMessageTimeStampKey;
+
+#pragma mark - Biometric
+
+extern NSString *const BLMMessageBiometericSamplesKey;
+extern NSString *const BLMMessageBiometricHeartRateKey;
+extern NSString *const BLMMessageBiometricStartDateKey;
+extern NSString *const BLMMessageBiometricEndDateKey;
 
 @interface BLNCommon : NSObject
 
