@@ -169,6 +169,11 @@
 {
     // Call the handler with the current timeline entry
     _BLNBallonIndexItem *currentIndexItem = [self.sortedIndexItems lastObject];
+    if (!currentIndexItem)
+    {
+        handler(nil);
+        return;
+    }
     handler(TimeLineEntry(complication, currentIndexItem));
 }
 

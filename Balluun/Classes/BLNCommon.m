@@ -54,9 +54,13 @@ NSString *const BLNManagerMessagePayloadDataKey = @"data";
 + (NSDictionary *)messageUserInfoForType:(NSString *)type payload:(NSDictionary *)dict
 {
     NSParameterAssert(type);
-    NSParameterAssert(dict);
+    NSMutableDictionary *messageDict = [NSMutableDictionary dictionaryWithDictionary:@{BLNManagerMessagePayloadTypeKey: type}];
+    if (dict)
+    {
+        messageDict[BLNManagerMessagePayloadDataKey] = dict;
+    }
     
-    return @{BLNManagerMessagePayloadTypeKey: type, BLNManagerMessagePayloadDataKey: dict};
+    return messageDict;
 }
 
 + (NSString *)typeForMessageUserInfo:(NSDictionary *)userInfo
