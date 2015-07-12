@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F9351D41B525F3D0026CF0C /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9351D31B525F3D0026CF0C /* ComplicationController.m */; };
+		3F9351D51B52907E0026CF0C /* BLNAlertState.m in Sources */ = {isa = PBXBuildFile; fileRef = DF131CC41B5215130021A5D9 /* BLNAlertState.m */; };
+		3F9351D61B5290A90026CF0C /* UIColor+Balluun.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5448D91B51DF4500AAFBE0 /* UIColor+Balluun.m */; };
 		3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF15FFA1B51D1E5002D6470 /* BLNManager.m */; };
 		3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160001B52073C002D6470 /* BLNDirectReport.m */; };
 		3FF160041B522F7C002D6470 /* BLNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160031B522F7C002D6470 /* BLNCommon.m */; };
@@ -513,8 +515,10 @@
 				3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */,
 				DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */,
 				3F9351D41B525F3D0026CF0C /* ComplicationController.m in Sources */,
+				3F9351D51B52907E0026CF0C /* BLNAlertState.m in Sources */,
 				3FF160051B522F7C002D6470 /* BLNCommon.m in Sources */,
 				DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */,
+				3F9351D61B5290A90026CF0C /* UIColor+Balluun.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

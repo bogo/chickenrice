@@ -10,12 +10,15 @@
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "BLNCommon.h"
 
+extern NSString *const BLNDirectReportStateChangedNotification;
+
 @interface BLNDirectReport : NSObject <WCSessionDelegate>
 
 @property (nonatomic, readonly, strong) WCSession *watchSession;
 @property (nonatomic, readonly, strong) NSSet *ballonIndexItems;
 @property (nonatomic, readonly, copy) NSArray *sortedIndexItems;
 
+@property (nonatomic, readonly, assign) BLNAlertState currentAlertState;
 @property (nonatomic, readonly, assign) BLNAlertState currentLocationScore;
 @property (nonatomic, readonly, copy) NSDate *currentLocationScoreTimestamp;
 

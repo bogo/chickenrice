@@ -10,6 +10,8 @@
 #import <HealthKit/HealthKit.h>
 #import <ClockKit/ClockKit.h>
 
+NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportStateChangedNotification";
+
 @implementation _BLNBallonIndexItem
 - (instancetype)initWithBalloonMessageUserInfo:(NSDictionary *)ballonUserInfo
 {

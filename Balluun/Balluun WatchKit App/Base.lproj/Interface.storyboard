@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8077.2"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider=""/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <button alignment="center" id="v6m-CL-liS">
+                            <group key="contentGroup" width="1" height="0.80000000000000004" heightAdjustment="-10" alignment="left" layout="vertical" spacing="0.0" id="QCV-8h-qzL">
+                                <items>
+                                    <label alignment="center" verticalAlignment="center" text="0" id="lzi-ea-y4e">
+                                        <fontDescription key="font" type="system" pointSize="35"/>
+                                    </label>
+                                    <label alignment="center" verticalAlignment="center" text="Activate" id="vrq-w0-bqV"/>
+                                </items>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </group>
+                            <connections>
+                                <action selector="alertButtonTapped" destination="AgC-eL-Hgc" id="o76-2G-RAO"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="center" title="Cancel" id="DGF-vO-pGG">
+                            <connections>
+                                <action selector="cancelButtonTapped" destination="AgC-eL-Hgc" id="rdv-cv-5ch"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="alertButton" destination="QCV-8h-qzL" id="LFU-4V-R3W"/>
+                        <outlet property="cancelButton" destination="DGF-vO-pGG" id="ANV-v3-k2a"/>
+                        <outlet property="subtitleLabel" destination="vrq-w0-bqV" id="8Z5-Bz-lvO"/>
+                        <outlet property="titleLabel" destination="lzi-ea-y4e" id="jDo-hS-Gi7"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="344.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +59,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider=""/>
+                <controller id="4sK-HA-Art" customClass="NotificationController"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

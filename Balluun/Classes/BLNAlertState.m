@@ -30,6 +30,7 @@
         case BLNAlertStateRed: {
             return [UIColor bln_redColor];
         }
+        case BLNAlertStatePanicked:
         case BLNAlertStateDEFCON: {
             return [UIColor bln_defconColor];
         };
