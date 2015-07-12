@@ -25,6 +25,9 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
 
 @interface BLNManager : NSObject <CLLocationManagerDelegate, WCSessionDelegate>
 
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *phoneNumber;
+
 @property (nonatomic, strong, readonly) NSURLSession *session;
 @property (nonatomic, strong, readonly) NSOperationQueue *queue;
 

@@ -35,6 +35,9 @@
     self = [super init];
     if (self)
     {
+        _name = @"Jason";
+        _phoneNumber = @"3479930638";
+        
         _currentAlertState = BLNAlertStateGreen;
         _currentLocationScore = BLNAlertStateGreen;
         _currentLocationScoreTimestamp = [NSDate date];
@@ -245,8 +248,8 @@
     if (state == BLNAlertStatePanicked)
     {
         // include name
-        dict[BLNManagerJSONUsernameKey] = @"Jason";
-        dict[BLNManagerJSONPhonenumberKey] = @"3479930638";
+        dict[BLNManagerJSONUsernameKey] = self.name;
+        dict[BLNManagerJSONPhonenumberKey] = self.phoneNumber;
     }
     
     dict[BLNManagerJSONAlertStateKey] = @(self.currentAlertState);
