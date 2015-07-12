@@ -33,6 +33,8 @@
         case BLNAlertStateDEFCON: {
             return [UIColor bln_defconColor];
         };
+        default:
+            return nil;
     }
 }
 
