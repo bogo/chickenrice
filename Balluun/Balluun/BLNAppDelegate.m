@@ -1,4 +1,5 @@
 #import "BLNAppDelegate.h"
+#import "BLNManager.h"
 
 @interface BLNAppDelegate ()
 
@@ -35,6 +36,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     ;
+}
+
+- (void)applicationShouldRequestHealthAuthorization:(nonnull UIApplication *)application
+{
+    [[BLNManager sharedInstance] requestPermissions];
 }
 
 @end

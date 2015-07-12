@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF15FFA1B51D1E5002D6470 /* BLNManager.m */; };
 		DFC75F8C1B51C9120099833E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8B1B51C9120099833E /* main.m */; };
 		DFC75F8F1B51C9120099833E /* BLNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8E1B51C9120099833E /* BLNAppDelegate.m */; };
 		DFC75F921B51C9120099833E /* BLNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F911B51C9120099833E /* BLNViewController.m */; };
@@ -67,6 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3FF15FF91B51D1E5002D6470 /* BLNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNManager.h; sourceTree = "<group>"; };
+		3FF15FFA1B51D1E5002D6470 /* BLNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNManager.m; sourceTree = "<group>"; };
 		DFC75F871B51C9120099833E /* Balluun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balluun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC75F8B1B51C9120099833E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DFC75F8D1B51C9120099833E /* BLNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNAppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		3FF15FF81B51D120002D6470 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3FF15FF91B51D1E5002D6470 /* BLNManager.h */,
+				3FF15FFA1B51D1E5002D6470 /* BLNManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 			files = (
 				DFC75F921B51C9120099833E /* BLNViewController.m in Sources */,
 				DFC75F8F1B51C9120099833E /* BLNAppDelegate.m in Sources */,
+				3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */,
 				DFC75F8C1B51C9120099833E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
