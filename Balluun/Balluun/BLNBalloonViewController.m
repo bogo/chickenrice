@@ -43,7 +43,7 @@
 {
     [super viewDidAppear:animated];
 
-    [self configureLevelLabelWithAlertState:[BLNManager sharedInstance].alertState];
+    [self configureLevelLabelWithAlertState:[BLNManager sharedInstance].currentAlertState];
 }
 
 #pragma mark - UI Setup
