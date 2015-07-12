@@ -12,6 +12,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import <WatchConnectivity/WatchConnectivity.h>
 #import "BLNCommon.h"
+#import "BLNAlertState.h"
 
 /**
  * Enum to describe the login states.
@@ -20,8 +21,6 @@ typedef NS_ENUM(NSUInteger, BLNLoginState) {
     BLNLoginStateLoggedOut,
     BLNLoginStateLoggedIn,
 };
-
-
 
 extern NSString *const BLNManagerBalloonIndexKey;
 
@@ -65,6 +64,6 @@ extern NSString *const BLNManagerBalloonIndexKey;
 @protocol BLNManagerObserver <NSObject>
 
 @optional
-- (void)manager:(BLNManager *)manager changedAlertStateFrom:(BLNAlertState)previousAlertState to:(BLNAlertState)alertState;
+- (void)manager:(BLNManager *)manager changedAlertStateTo:(BLNAlertState)alertState;
 
 @end

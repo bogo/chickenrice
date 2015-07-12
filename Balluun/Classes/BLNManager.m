@@ -100,10 +100,8 @@
         return;
     }
 
-    BLNAlertState oldAlertState = _alertState;
     _alertState = alertState;
-    [self notifyObserversAboutAlertStateChangeFrom:oldAlertState
-                                                to:alertState];
+    [self notifyObserversAboutAlertStateChangeTo:_alertState];
     
     if (_alertState == BLNAlertStateDEFCON)
     {
@@ -289,15 +287,14 @@
     [self.observers removeObject:observer];
 }
      
-- (void)notifyObserversAboutAlertStateChangeFrom:(BLNAlertState)previousAlertState to:(BLNAlertState)newAlertState
+- (void)notifyObserversAboutAlertStateChangeTo:(BLNAlertState)newAlertState
 {
     for (id<BLNManagerObserver> observer in self.observers.allObjects) {
-        if (![observer respondsToSelector:@selector(manager:changedAlertStateFrom:to:)]) {
+        if (![observer respondsToSelector:@selector(manager:changedAlertStateTo:)]) {
             continue;
         }
         [observer manager:self
-    changedAlertStateFrom:previousAlertState
-                       to:newAlertState];
+      changedAlertStateTo:newAlertState];
     }
 }
 
