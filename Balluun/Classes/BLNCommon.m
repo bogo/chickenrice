@@ -35,7 +35,8 @@ NSString *const BLNManagerJSONBiometricHeartRateKey = @"heart-rate";
 
 NSString *const BLNManagerJSONTimestampKey = @"timestamp";
 NSString *const BLNManagerJSONUserHashKey = @"user-hash";
-NSString *const BLNManagerJSONUsernameKey = @"username";
+NSString *const BLNManagerJSONUsernameKey = @"name";
+NSString *const BLNManagerJSONPhonenumberKey = @"number";
 NSString *const BLNManagerJSONAlertStateKey = @"alert-state";
 
 NSString *const BLNManagerBalloonIndexKey = @"balloons";
