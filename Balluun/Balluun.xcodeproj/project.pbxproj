@@ -27,6 +27,8 @@
 		DF5449C41B51FE3B00AAFBE0 /* BLNContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449C31B51FE3B00AAFBE0 /* BLNContactViewController.m */; };
 		DF5449C81B52005D00AAFBE0 /* BLNOwnerContactProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449C71B52005D00AAFBE0 /* BLNOwnerContactProvider.m */; };
 		DF5449CB1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5449CA1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m */; };
+		DF74BF4F1B529E3000DD2C58 /* LatoFont.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DF74BF4C1B529E3000DD2C58 /* LatoFont.bundle */; };
+		DF74BF501B529E3000DD2C58 /* UIFont+Lato.m in Sources */ = {isa = PBXBuildFile; fileRef = DF74BF4E1B529E3000DD2C58 /* UIFont+Lato.m */; };
 		DFC75F8C1B51C9120099833E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8B1B51C9120099833E /* main.m */; };
 		DFC75F8F1B51C9120099833E /* BLNAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F8E1B51C9120099833E /* BLNAppDelegate.m */; };
 		DFC75F921B51C9120099833E /* BLNLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC75F911B51C9120099833E /* BLNLaunchViewController.m */; };
@@ -121,6 +123,9 @@
 		DF5449C71B52005D00AAFBE0 /* BLNOwnerContactProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNOwnerContactProvider.m; sourceTree = "<group>"; };
 		DF5449C91B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNTrustedFriendsContactProvider.h; sourceTree = "<group>"; };
 		DF5449CA1B52006900AAFBE0 /* BLNTrustedFriendsContactProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNTrustedFriendsContactProvider.m; sourceTree = "<group>"; };
+		DF74BF4C1B529E3000DD2C58 /* LatoFont.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = LatoFont.bundle; path = Vendor/LatoFont/LatoFont.bundle; sourceTree = "<group>"; };
+		DF74BF4D1B529E3000DD2C58 /* UIFont+Lato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Lato.h"; path = "Vendor/LatoFont/UIFont+Lato.h"; sourceTree = "<group>"; };
+		DF74BF4E1B529E3000DD2C58 /* UIFont+Lato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Lato.m"; path = "Vendor/LatoFont/UIFont+Lato.m"; sourceTree = "<group>"; };
 		DFC75F871B51C9120099833E /* Balluun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Balluun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC75F8B1B51C9120099833E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DFC75F8D1B51C9120099833E /* BLNAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNAppDelegate.h; sourceTree = "<group>"; };
@@ -268,9 +273,20 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		DF74BF321B5297B800DD2C58 /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				DF74BF4C1B529E3000DD2C58 /* LatoFont.bundle */,
+				DF74BF4D1B529E3000DD2C58 /* UIFont+Lato.h */,
+				DF74BF4E1B529E3000DD2C58 /* UIFont+Lato.m */,
+			);
+			name = Lato;
+			sourceTree = "<group>";
+		};
 		DFC75F7E1B51C9110099833E = {
 			isa = PBXGroup;
 			children = (
+				DF74BF321B5297B800DD2C58 /* Lato */,
 				3FF15FF81B51D120002D6470 /* Classes */,
 				DFC75F891B51C9120099833E /* iOS */,
 				DFC75FA21B51C9120099833E /* WatchKit App */,
@@ -458,6 +474,7 @@
 			files = (
 				DFC75F9A1B51C9120099833E /* LaunchScreen.storyboard in Resources */,
 				DFC75F971B51C9120099833E /* Assets.xcassets in Resources */,
+				DF74BF4F1B529E3000DD2C58 /* LatoFont.bundle in Resources */,
 				DFC75F951B51C9120099833E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +517,7 @@
 				3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */,
 				DF5448DA1B51DF4500AAFBE0 /* UIColor+Balluun.m in Sources */,
 				DF5449C41B51FE3B00AAFBE0 /* BLNContactViewController.m in Sources */,
+				DF74BF501B529E3000DD2C58 /* UIFont+Lato.m in Sources */,
 				DF5448D61B51DEF800AAFBE0 /* BLNWelcomeViewController.m in Sources */,
 				DF131CC61B5215130021A5D9 /* BLNAlertState.m in Sources */,
 				DFC75F8C1B51C9120099833E /* main.m in Sources */,

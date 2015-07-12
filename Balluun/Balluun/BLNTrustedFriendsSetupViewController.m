@@ -23,6 +23,14 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.headerText = @"Who do you trust?";
+    self.bodyText = @"Based on your contact entry, we picked a person we think you trust the most! Make this contact your Trusted Friend by tapping below.";
+
+}
+
 - (void)acceptContact
 {
     [[BLNManager sharedInstance] login];

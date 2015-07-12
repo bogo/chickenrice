@@ -3,6 +3,8 @@
 #import "BLNAlertState.h"
 #import "BLNActionButton.h"
 #import "UIView+NSLayoutConstraint.h"
+#import "UIFont+Lato.h"
+#import "UIColor+Balluun.h"
 
 @import MapKit;
 
@@ -37,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor bln_backgroundColor];
     
     self.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
@@ -59,15 +62,15 @@
     NSDictionary *views = NSDictionaryOfVariableBindings(_mapView, _maskView, _promptLabel, _levelLabel, _defconButton);
     
     [self.view addConstraintsFromVisualFormatStrings:@[
-                                                       @"H:|-[_mapView]-|",
-                                                       @"V:|-[_mapView]|",
-                                                       @"H:|-[_maskView]-|",
-                                                       @"V:|-[_maskView]|",
-                                                       @"H:|-[_promptLabel]-|",
-                                                       @"H:|-[_levelLabel]-|",
-                                                       @"V:|-[_promptLabel]-[_levelLabel]",
+                                                       @"H:|[_mapView]|",
+                                                       @"H:|[_maskView]|",
+                                                       @"H:|[_promptLabel]|",
+                                                       @"H:|[_levelLabel]|",
+                                                       @"V:|[_mapView]|",
+                                                       @"V:|[_maskView]|",
+                                                       @"V:|-(100)-[_promptLabel]-[_levelLabel]",
                                                        @"H:|-[_defconButton]-|",
-                                                       @"V:[_defconButton]-|",
+                                                       @"V:[_defconButton(65)]-(100)-|",
                                                        ]
                                              metrics:nil
                                                views:views];
@@ -87,10 +90,16 @@
 - (void)setupLevelLabel
 {
     self.promptLabel.textAlignment = NSTextAlignmentCenter;
+    self.promptLabel.font = [UIFont latoLightFontOfSize:18.0];
+    self.promptLabel.textColor = [UIColor bln_textColor];
     self.promptLabel.text = @"Your current safety status is:";
+    self.promptLabel.shadowColor = [UIColor whiteColor];
+    self.promptLabel.shadowOffset = CGSizeMake(0, 1);
     
     self.levelLabel.textAlignment = NSTextAlignmentCenter;
-    self.levelLabel.font = [UIFont boldSystemFontOfSize:72.0];
+    self.levelLabel.font = [UIFont latoFontOfSize:64.0];
+    self.levelLabel.shadowColor = [UIColor whiteColor];
+    self.levelLabel.shadowOffset = CGSizeMake(0, 1);
 }
 
 - (void)configureLevelLabelWithAlertState:(BLNAlertState)alertState
@@ -129,8 +138,8 @@
 
 - (void)setupMapView
 {
-    self.maskView.backgroundColor = [UIColor whiteColor];
-    self.maskView.alpha = 0.7;
+    self.mapView.alpha = 0.8;
+    self.maskView.alpha = 0.05;
 }
 
 - (void)configureMapWithAlertState:(BLNAlertState)alertState
@@ -149,6 +158,8 @@
             break;
         }
     }
+    self.maskView.backgroundColor = [BLNAlertStateHelper colorFromAlertState:alertState];
+    self.mapView.tintColor = [BLNAlertStateHelper colorFromAlertState:alertState];
 }
 
 #pragma mark - DEFCON

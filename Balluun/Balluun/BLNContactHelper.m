@@ -42,7 +42,7 @@
 
 - (CNContact *)deviceOwner
 {
-    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:@"Rybka"];
+    NSPredicate *predicate = [CNContact predicateForContactsMatchingName:@"Haro"];
     
     NSError *error = nil;
     NSArray *contacts = [self.contactStore unifiedContactsMatchingPredicate:predicate

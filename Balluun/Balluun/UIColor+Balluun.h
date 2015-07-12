@@ -12,5 +12,6 @@
 + (UIColor *)bln_buttonColor;
 + (UIColor *)bln_textColor;
 + (UIColor *)bln_backgroundColor;
++ (UIColor *)bln_shadowColor;
 
 @end

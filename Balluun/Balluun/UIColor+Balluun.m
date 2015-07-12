@@ -52,4 +52,9 @@
                            alpha:1.0];
 }
 
++ (UIColor *)bln_shadowColor
+{
+    return [UIColor colorWithRed:0.5843 green:0.6471 blue:0.6510 alpha:1.0];
+}
+
 @end
