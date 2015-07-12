@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <HealthKit/HealthKit.h>
 #import <CoreMotion/CoreMotion.h>
+#import <WatchConnectivity/WatchConnectivity.h>
 
 typedef NS_ENUM(NSUInteger, BLNAlertState) {
     BLNAlertStateGreen,
@@ -31,6 +32,7 @@ extern NSString *const BLNManagerJSONHeadingKey;
 extern NSString *const BLNManagerJSONActivityKey;
 extern NSString *const BLNManagerJSONTimestampKey;
 extern NSString *const BLNManagerJSONUserHashKey;
+extern NSString *const BLNManagerJSONAlertStateKey;
 
 extern NSString *const BLNManagerJSONLocationLatitudeKey;
 extern NSString *const BLNManagerJSONLocationLongitudeKey;
@@ -50,14 +52,17 @@ extern NSString *const BLNManagerJSONActivityTypeKey;
 extern NSString *const BLNManagerJSONActivityConfidenceKey;
 extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 
+extern NSString *const BLNManagerBalloonIndexKey;
+
 @protocol BLNManagerObserver;
 
-@interface BLNManager : NSObject <CLLocationManagerDelegate>
+@interface BLNManager : NSObject <CLLocationManagerDelegate, WCSessionDelegate>
 
 @property (nonatomic, strong, readonly) NSURLSession *session;
 @property (nonatomic, strong, readonly) NSOperationQueue *queue;
 
 // internal managers
+@property (nonatomic, strong, readonly) WCSession *watchSession;
 @property (nonatomic, strong, readonly) CMMotionActivityManager *motionManager;
 @property (nonatomic, strong, readonly) CLLocationManager *locationManager;
 @property (nonatomic, strong, readonly) HKHealthStore *healthStore;
