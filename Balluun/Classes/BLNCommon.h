@@ -17,6 +17,7 @@ extern NSString *const BLNManagerJSONActivityKey;
 extern NSString *const BLNManagerJSONTimestampKey;
 extern NSString *const BLNManagerJSONUserHashKey;
 extern NSString *const BLNManagerJSONAlertStateKey;
+extern NSString *const BLNManagerJSONUsernameKey;
 
 extern NSString *const BLNManagerJSONLocationLatitudeKey;
 extern NSString *const BLNManagerJSONLocationLongitudeKey;

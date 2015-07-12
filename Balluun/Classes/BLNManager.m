@@ -243,6 +243,12 @@
         // include audio
     }
     
+    if (state == BLNAlertStatePanicked)
+    {
+        // include name
+        dict[BLNManagerJSONUsernameKey] = @"Jason";
+    }
+    
     dict[BLNManagerJSONAlertStateKey] = @(self.currentAlertState);
     dict[BLNManagerJSONTimestampKey] = @([[NSDate date] timeIntervalSinceReferenceDate]);
     dict[BLNManagerJSONUserHashKey] = [[NSUUID UUID] UUIDString];
