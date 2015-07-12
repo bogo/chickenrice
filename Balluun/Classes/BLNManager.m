@@ -406,9 +406,11 @@
 {
     NSString *type = [BLNCommon typeForMessageUserInfo:message];
     NSDictionary *payload = [BLNCommon payloadForMessageUserInfo:message];
+   
+    NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
     if ([type isEqualToString:BLNMessageRequestLatestStateType])
     {
-        replyHandler(@{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])});
+        replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessageBiometricsUpdateType])
@@ -422,16 +424,19 @@
     if ([type isEqualToString:BLNMessagePANICINTHEDISCOType])
     {
         [self setCurrentAlertState:BLNAlertStateDEFCON];
+        replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessageCheerioType])
     {
         [self setCurrentAlertState:BLNAlertStateGreen];
+        replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessagePanicType])
     {
         [self panic];
+        replyHandler(currentState);
     }
 }
 

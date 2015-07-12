@@ -41,6 +41,7 @@ extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 extern NSString *const BLNManagerJSONBiometricHeartRateKey;
 
 extern NSString *const BLNManagerBalloonIndexKey;
+extern NSString *const BLNManagerCurrentAlertStateKey;
 
 #pragma mark - Messaging
 

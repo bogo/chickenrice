@@ -15,6 +15,11 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
 @implementation _BLNBallonIndexItem
 - (instancetype)initWithBalloonMessageUserInfo:(NSDictionary *)ballonUserInfo
 {
+    if (![ballonUserInfo objectForKey:BLNManagerBalloonIndexKey] || [ballonUserInfo objectForKey:BLNMessageTimeStampKey])
+    {
+        return nil;
+    }
+    
     self = [super init];
     if (self)
     {
@@ -153,7 +158,7 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
         {
             NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessagePANICINTHEDISCOType payload:nil];
             [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
-                
+                [self updateCurrentStateWithReplyMessage:replyMessage];
             } errorHandler:^(NSError * __nonnull error) {
                 
             }];
@@ -169,7 +174,7 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
 {
     NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessagePanicType payload:nil];
     [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
-        
+        [self updateCurrentStateWithReplyMessage:replyMessage];
     } errorHandler:^(NSError * __nonnull error) {
         
     }];
@@ -186,7 +191,7 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
     
     NSDictionary *message = [BLNCommon messageUserInfoForType:BLNMessageCheerioType payload:nil];
     [self.watchSession sendMessage:message replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
-        
+        [self updateCurrentStateWithReplyMessage:replyMessage];
     } errorHandler:^(NSError * __nonnull error) {
         
     }];
@@ -202,32 +207,43 @@ NSString *const BLNDirectReportStateChangedNotification = @"BLNDirectReportState
     return [[[self.sortedIndexItems lastObject] timestamp] copy];
 }
 
+- (void)updateCurrentStateWithReplyMessage:(NSDictionary *)replyMessage
+{
+    if ([replyMessage objectForKey:BLNManagerCurrentAlertStateKey])
+    {
+        _currentAlertState = [[replyMessage objectForKey:BLNManagerCurrentAlertStateKey] unsignedIntegerValue];
+    }
+    
+    _BLNBallonIndexItem *indexItem = [[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:replyMessage];
+    if (![[[self.sortedIndexItems lastObject] timestamp] isEqualToDate:indexItem.timestamp] && indexItem)
+    {
+        [(NSMutableSet *)self.ballonIndexItems addObject:indexItem];
+        _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (CLKComplication *complication in [[CLKComplicationServer sharedInstance] activeComplications])
+            {
+                if ([self.ballonIndexItems count] > 1)
+                {
+                    [[CLKComplicationServer sharedInstance] extendTimelineForComplication:complication];
+                }
+                else
+                {
+                    [[CLKComplicationServer sharedInstance] reloadTimelineForComplication:complication];
+                }
+            }
+        });
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:BLNDirectReportStateChangedNotification object:self];
+}
+
 - (void)requestLatestState
 {
     if (self.watchSession.isReachable)
     {
         [self.watchSession sendMessage:[BLNCommon messageUserInfoForType:BLNMessageRequestLatestStateType payload:nil] replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
-            _BLNBallonIndexItem *indexItem = [[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:replyMessage];
-            if (![[[self.sortedIndexItems lastObject] timestamp] isEqualToDate:indexItem.timestamp])
-            {
-                [(NSMutableSet *)self.ballonIndexItems addObject:indexItem];
-                _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    for (CLKComplication *complication in [[CLKComplicationServer sharedInstance] activeComplications])
-                    {
-                        if ([self.ballonIndexItems count] > 1)
-                        {
-                            [[CLKComplicationServer sharedInstance] extendTimelineForComplication:complication];
-                        }
-                        else
-                        {
-                            [[CLKComplicationServer sharedInstance] reloadTimelineForComplication:complication];
-                        }
-                    }
-                });
-            }
-            
+            [self updateCurrentStateWithReplyMessage:replyMessage];
         } errorHandler:^(NSError * __nonnull error) {
             NSLog(@"Error getting latest state: %@", error);
         }];

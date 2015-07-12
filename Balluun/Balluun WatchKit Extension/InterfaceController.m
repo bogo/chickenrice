@@ -67,12 +67,7 @@
 }
 
 - (IBAction)alertButtonTapped
-{
-    if ([[BLNDirectReport sharedInstance] currentLocationScore] == BLNAlertStateGreen)
-    {
-        return;
-    }
-    
+{    
     [[BLNDirectReport sharedInstance] startDefconState];
     [self updateUserInterfaceWithState:BLNAlertStateDEFCON];
     

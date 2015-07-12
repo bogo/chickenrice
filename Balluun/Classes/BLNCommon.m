@@ -40,6 +40,7 @@ NSString *const BLNManagerJSONPhonenumberKey = @"number";
 NSString *const BLNManagerJSONAlertStateKey = @"alert-state";
 
 NSString *const BLNManagerBalloonIndexKey = @"balloons";
+NSString *const BLNManagerCurrentAlertStateKey = @"current-alert-state";
 
 #pragma mark - Messages
 
