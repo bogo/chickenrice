@@ -1,5 +1,6 @@
 #import "BLNAppDelegate.h"
 #import "BLNManager.h"
+#import "BLNMetaViewController.h"
 #import "BLNLaunchViewController.h"
 
 @interface BLNAppDelegate ()
@@ -14,7 +15,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    self.window.rootViewController = [BLNLaunchViewController new];
+    self.window.rootViewController = [[BLNMetaViewController alloc] initWithRootViewController:[BLNLaunchViewController new]];
 
     return YES;
 }

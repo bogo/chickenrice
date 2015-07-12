@@ -1,5 +1,7 @@
 #import "BLNTrustedFriendsSetupViewController.h"
-#import "BLNContactHelper.h"
+#import "BLNBalloonViewController.H"
+#import "BLNManager.h"
+
 @import Contacts;
 
 @interface BLNTrustedFriendsSetupViewController ()
@@ -23,7 +25,8 @@
 
 - (void)acceptContact
 {
-    NSLog(@"Your princess is in another castle!");
+    [[BLNManager sharedInstance] login];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

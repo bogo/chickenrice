@@ -1,6 +1,6 @@
 @import UIKit;
 
-@interface BLNLaunchViewController : UINavigationController
+@interface BLNLaunchViewController : UIViewController
 
 @end
 

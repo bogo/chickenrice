@@ -71,6 +71,8 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
         [_motionManager startActivityUpdatesToQueue:_queue withHandler:^(CMMotionActivity * __nullable activity) {
             _currentActivity = [activity copy];
         }];
+        
+        _loginState = BLNLoginStateLoggedOut;
     }
     return self;
 }
@@ -239,6 +241,13 @@ NSString *const BLNManagerJSONUserHashKey = @"user";
     {
         [self.locationManager startMonitoringSignificantLocationChanges];
     }
+}
+
+#pragma mark - Login
+
+- (void)login
+{
+    _loginState = BLNLoginStateLoggedIn;
 }
 
 
