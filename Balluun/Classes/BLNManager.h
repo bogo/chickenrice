@@ -18,6 +18,14 @@ typedef NS_ENUM(NSUInteger, BLNAlertState) {
     BLNAlertStateDEFCON
 };
 
+/**
+ * Enum to describe the login states.
+ */
+typedef NS_ENUM(NSUInteger, BLNGlobalLoginState) {
+    BLNGlobalLoginStateLoggedOut,
+    BLNGlobalLoginStateLoggedIn,
+};
+
 extern NSString *const BLNManagerJSONLocationKey;
 extern NSString *const BLNManagerJSONHeadingKey;
 extern NSString *const BLNManagerJSONActivityKey;
@@ -58,6 +66,8 @@ extern NSString *const BLNManagerJSONActivityStartTimestampKey;
 @property (nonatomic, copy, readonly) CLLocation *currentLocation;
 @property (nonatomic, copy, readonly) CLHeading *currentHeading;
 @property (nonatomic, assign, readonly) BLNAlertState locationScore;
+
+@property (nonatomic, assign, readonly) BLNGlobalLoginState loginState;
 
 + (instancetype)sharedInstance;
 
