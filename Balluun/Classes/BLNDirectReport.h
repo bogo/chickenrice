@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <WatchConnectivity/WatchConnectivity.h>
-#import <ClockKit/ClockKit.h>
 #import "BLNCommon.h"
 
-@interface BLNDirectReport : NSObject <WCSessionDelegate, CLKComplicationDataSource>
+@interface BLNDirectReport : NSObject <WCSessionDelegate>
 
 @property (nonatomic, readonly, strong) WCSession *watchSession;
 @property (nonatomic, readonly, strong) NSSet *ballonIndexItems;
+@property (nonatomic, readonly, copy) NSArray *sortedIndexItems;
 
 @property (nonatomic, readonly, assign) BLNAlertState currentLocationScore;
 @property (nonatomic, readonly, copy) NSDate *currentLocationScoreTimestamp;
@@ -23,4 +23,10 @@
 
 - (void)requestLatestState;
 
+@end
+
+@interface _BLNBallonIndexItem : NSObject
+@property (nonatomic, assign, readonly) BLNAlertState alertState;
+@property (nonatomic, strong, readonly) NSDate *timestamp;
+- (instancetype)initWithBalloonMessageUserInfo:(NSDictionary *)ballonUserInfo;
 @end

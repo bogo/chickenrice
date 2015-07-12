@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CLKComplicationPrincipalClass</key>
-	<string>BLNDirectReport</string>
+	<string>ComplicationController</string>
 	<key>CLKComplicationSupportedFamilies</key>
 	<array>
 		<string>CLKComplicationFamilyModularSmall</string>

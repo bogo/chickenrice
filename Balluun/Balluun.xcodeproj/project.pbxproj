@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F9351D41B525F3D0026CF0C /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9351D31B525F3D0026CF0C /* ComplicationController.m */; };
 		3FF15FFB1B51D1E5002D6470 /* BLNManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF15FFA1B51D1E5002D6470 /* BLNManager.m */; };
 		3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160001B52073C002D6470 /* BLNDirectReport.m */; };
 		3FF160041B522F7C002D6470 /* BLNCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF160031B522F7C002D6470 /* BLNCommon.m */; };
@@ -83,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F9351D21B525F3D0026CF0C /* ComplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComplicationController.h; sourceTree = "<group>"; };
+		3F9351D31B525F3D0026CF0C /* ComplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComplicationController.m; sourceTree = "<group>"; };
 		3FF15FF91B51D1E5002D6470 /* BLNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNManager.h; sourceTree = "<group>"; };
 		3FF15FFA1B51D1E5002D6470 /* BLNManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLNManager.m; sourceTree = "<group>"; };
 		3FF15FFF1B52073C002D6470 /* BLNDirectReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLNDirectReport.h; sourceTree = "<group>"; };
@@ -330,6 +333,8 @@
 				DFC75FB81B51C9120099833E /* ExtensionDelegate.m */,
 				DFC75FBA1B51C9120099833E /* NotificationController.h */,
 				DFC75FBB1B51C9120099833E /* NotificationController.m */,
+				3F9351D21B525F3D0026CF0C /* ComplicationController.h */,
+				3F9351D31B525F3D0026CF0C /* ComplicationController.m */,
 				DFC75FC01B51C9120099833E /* Assets.xcassets */,
 				DFC75FC21B51C9120099833E /* Info.plist */,
 				DFC75FB21B51C9120099833E /* Supporting Files */,
@@ -507,6 +512,7 @@
 				DFC75FB91B51C9120099833E /* ExtensionDelegate.m in Sources */,
 				3FF160011B52073C002D6470 /* BLNDirectReport.m in Sources */,
 				DFC75FB61B51C9120099833E /* InterfaceController.m in Sources */,
+				3F9351D41B525F3D0026CF0C /* ComplicationController.m in Sources */,
 				3FF160051B522F7C002D6470 /* BLNCommon.m in Sources */,
 				DFC75FBC1B51C9120099833E /* NotificationController.m in Sources */,
 			);
