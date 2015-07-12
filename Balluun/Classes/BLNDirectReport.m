@@ -80,6 +80,16 @@
 
 #pragma mark - State
 
+- (BLNAlertState)currentLocationScore
+{
+    return [[self.sortedIndexItems lastObject] alertState];
+}
+
+- (NSDate *)currentLocationScoreTimestamp
+{
+    return [[[self.sortedIndexItems lastObject] timestamp] copy];
+}
+
 - (void)requestLatestState
 {
     if (self.watchSession.isReachable)
@@ -90,19 +100,22 @@
             {
                 return;
             }
-            
-            [(NSMutableSet *)self.ballonIndexItems addObject:[[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:data]];
-            _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];
-            
-            for (CLKComplication *complication in [[CLKComplicationServer sharedInstance] activeComplications])
+            _BLNBallonIndexItem *indexItem = [[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:data];
+            if (![[[self.sortedIndexItems lastObject] timestamp] isEqualToDate:indexItem.timestamp])
             {
-                if ([self.ballonIndexItems count] > 1)
+                [(NSMutableSet *)self.ballonIndexItems addObject:indexItem];
+                _sortedIndexItems = [self.ballonIndexItems sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES]]];
+                
+                for (CLKComplication *complication in [[CLKComplicationServer sharedInstance] activeComplications])
                 {
-                    [[CLKComplicationServer sharedInstance] extendTimelineForComplication:complication];
-                }
-                else
-                {
-                    [[CLKComplicationServer sharedInstance] reloadTimelineForComplication:complication];
+                    if ([self.ballonIndexItems count] > 1)
+                    {
+                        [[CLKComplicationServer sharedInstance] extendTimelineForComplication:complication];
+                    }
+                    else
+                    {
+                        [[CLKComplicationServer sharedInstance] reloadTimelineForComplication:complication];
+                    }
                 }
             }
             

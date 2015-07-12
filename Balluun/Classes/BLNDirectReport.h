@@ -16,6 +16,9 @@
 @property (nonatomic, readonly, strong) WCSession *watchSession;
 @property (nonatomic, readonly, strong) NSSet *ballonIndexItems;
 
+@property (nonatomic, readonly, assign) BLNAlertState currentLocationScore;
+@property (nonatomic, readonly, copy) NSDate *currentLocationScoreTimestamp;
+
 + (instancetype)sharedInstance;
 
 - (void)requestLatestState;

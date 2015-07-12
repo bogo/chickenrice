@@ -200,7 +200,7 @@
 
 - (void)updateWatch
 {
-    [self.watchSession transferCurrentComplicationUserInfo:@{BLNManagerBalloonIndexKey: @(self.currentLocationScore)}];
+    [self.watchSession transferCurrentComplicationUserInfo:@{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])}];
 }
 
 - (void)updateServer
@@ -221,7 +221,15 @@
                 return;
             }
             
-            [self updateWatch];
+            BLNAlertState locationScore = nil;
+            
+            if (locationScore != self.currentLocationScore)
+            {
+                _currentLocationScore = locationScore;
+                _currentLocationScoreTimestamp = [NSDate date];
+                [self updateWatch];
+            }
+            
         }] resume];
     }
     else
@@ -293,8 +301,7 @@
         if (![observer respondsToSelector:@selector(manager:changedAlertStateTo:)]) {
             continue;
         }
-        [observer manager:self
-      changedAlertStateTo:newAlertState];
+        [observer manager:self changedAlertStateTo:newAlertState];
     }
 }
 
@@ -328,7 +335,7 @@
     NSString *type = [BLNCommon typeForMessageUserInfo:message];
     if ([type isEqualToString:BLNMessageRequestLatestStateType])
     {
-        replyHandler(@{BLNManagerBalloonIndexKey: @(self.currentLocationScore)});
+        replyHandler(@{BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])});
     }
 }
 
