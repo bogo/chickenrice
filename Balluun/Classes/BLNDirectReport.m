@@ -95,12 +95,7 @@
     if (self.watchSession.isReachable)
     {
         [self.watchSession sendMessage:[BLNCommon messageUserInfoForType:BLNMessageRequestLatestStateType payload:nil] replyHandler:^(NSDictionary<NSString *,id> * __nonnull replyMessage) {
-            NSDictionary *data = [BLNCommon payloadForMessageUserInfo:replyMessage];
-            if (!data)
-            {
-                return;
-            }
-            _BLNBallonIndexItem *indexItem = [[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:data];
+            _BLNBallonIndexItem *indexItem = [[_BLNBallonIndexItem alloc] initWithBalloonMessageUserInfo:replyMessage];
             if (![[[self.sortedIndexItems lastObject] timestamp] isEqualToDate:indexItem.timestamp])
             {
                 [(NSMutableSet *)self.ballonIndexItems addObject:indexItem];
