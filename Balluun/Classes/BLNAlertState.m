@@ -1,4 +1,5 @@
-#include "BLNAlertState.h"
+#import "BLNAlertState.h"
+#import "UIColor+Balluun.h"
 
 @implementation BLNAlertStateHelper
 
@@ -15,6 +16,24 @@
 + (NSString *)stringFromAlertState:(BLNAlertState)alertState
 {
     return [self alertStateMappings][@(alertState)];
+}
+
++ (UIColor *)colorFromAlertState:(BLNAlertState)alertState
+{
+    switch (alertState) {
+        case BLNAlertStateGreen: {
+            return [UIColor bln_greenColor];
+        }
+        case BLNAlertStateOrange: {
+            return [UIColor bln_orangeColor];
+        }
+        case BLNAlertStateRed: {
+            return [UIColor bln_redColor];
+        }
+        case BLNAlertStateDEFCON: {
+            return [UIColor bln_defconColor];
+        };
+    }
 }
 
 @end

@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, BLNAlertState) {
     BLNAlertStateGreen,
@@ -10,8 +10,13 @@ typedef NS_ENUM(NSUInteger, BLNAlertState) {
 @interface BLNAlertStateHelper : NSObject
 
 /**
- *  Function returning an NSString for the BLNAlertState.
+ * Function returning an NSString for the BLNAlertState.
  */
 + (NSString *)stringFromAlertState:(BLNAlertState)alertState;
+
+/**
+ * Function returning a UIColor for the BLNAlertState.
+ */
++ (UIColor *)colorFromAlertState:(BLNAlertState)alertState;
 
 @end
