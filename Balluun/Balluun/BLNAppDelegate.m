@@ -85,5 +85,20 @@
     completionHandler();
 }
 
+- (void)application:(nonnull UIApplication *)application didReceiveLocalNotification:(nonnull UILocalNotification *)notification
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:notification.alertTitle message:notification.alertBody preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *notOkay = [UIAlertAction actionWithTitle:@"Not Okay" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * __nonnull action) {
+        [[BLNManager sharedInstance] panic];
+    }];
+    [alert addAction:notOkay];
+    UIAlertAction *okay = [UIAlertAction actionWithTitle:@"I'm okay" style:UIAlertActionStyleCancel handler:NULL];
+    [alert setPreferredAction:notOkay];
+    [alert addAction:okay];
+    
+    [self.window.rootViewController presentViewController:alert animated:YES completion:NULL];
+
+}
+
 
 @end
