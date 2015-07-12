@@ -2,19 +2,24 @@
 
 @implementation UIColor (Balluun)
 
-+ (UIColor *)bln_red
++ (UIColor *)bln_greenColor
 {
-    return [UIColor redColor];
+    return [UIColor greenColor];
 }
 
-+ (UIColor *)bln_orange
++ (UIColor *)bln_orangeColor
 {
     return [UIColor orangeColor];
 }
 
-+ (UIColor *)bln_green
++ (UIColor *)bln_redColor
 {
-    return [UIColor greenColor];
+    return [UIColor redColor];
+}
+
++ (UIColor *)bln_defconColor
+{
+    return [UIColor redColor];
 }
 
 + (UIColor *)bln_buttonColor
