@@ -66,7 +66,7 @@
                        forState:UIControlStateSelected];
     
     [self.defconButton addTarget:self
-                          action:@selector(initiateDefcon)
+                          action:@selector(toggleDefcon)
                 forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -88,9 +88,20 @@
 
 #pragma mark - DEFCON
 
-- (void)initiateDefcon
+- (void)toggleDefcon
 {
-    [[BLNManager sharedInstance] startDefconState];
+    switch ([BLNManager sharedInstance].currentAlertState) {
+        case BLNAlertStateGreen:
+        case BLNAlertStateOrange:
+        case BLNAlertStateRed: {
+            [[BLNManager sharedInstance] startDefconState];
+            break;
+        }
+        case BLNAlertStateDEFCON: {
+            [[BLNManager sharedInstance] stopDefconState];
+            break;
+        }
+    }
 }
 
 #pragma mark - BLNManagerObserver
