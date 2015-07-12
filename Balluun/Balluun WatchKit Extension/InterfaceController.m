@@ -36,7 +36,6 @@
 
 - (void)updateUserInterfaceWithState:(BLNAlertState)state
 {
-    [self.alertButton setBackgroundColor:[BLNAlertStateHelper colorFromAlertState:[[BLNDirectReport sharedInstance] currentLocationScore]]];
     [self animateWithDuration:0.33 animations:^{
         [self.cancelButton setAlpha:(state == BLNAlertStateDEFCON) ? 1.0 : 0.0];
     }];
@@ -44,8 +43,10 @@
     [self.titleLabel setText:[NSString stringWithFormat:@"%i", [[BLNDirectReport sharedInstance] currentLocationScore]]];
 
     NSString *subtitleString = @"Safe";
+    UIColor *color = [BLNAlertStateHelper colorFromAlertState:[[BLNDirectReport sharedInstance] currentLocationScore]];
     if (state >= BLNAlertStateDEFCON)
     {
+        color = [BLNAlertStateHelper colorFromAlertState:BLNAlertStateDEFCON];
         subtitleString = @"Tracking";
     }
     else
@@ -55,7 +56,7 @@
             subtitleString = @"Activate";
         }
     }
-    
+    [self.alertButton setBackgroundColor:color];
     [self.subtitleLabel setText:subtitleString];
 }
 
@@ -67,7 +68,7 @@
 }
 
 - (IBAction)alertButtonTapped
-{    
+{
     [[BLNDirectReport sharedInstance] startDefconState];
     [self updateUserInterfaceWithState:BLNAlertStateDEFCON];
     
