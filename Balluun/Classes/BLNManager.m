@@ -50,7 +50,9 @@
         _locationManager.activityType = CLActivityTypeOther;
         _locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
         _locationManager.delegate = self;
-        
+        [_locationManager startUpdatingLocation];
+        [_locationManager startUpdatingHeading];
+
         if ([WCSession isSupported])
         {
             _watchSession = [WCSession defaultSession];
@@ -115,17 +117,7 @@
     if (_currentAlertState == BLNAlertStateDEFCON)
     {
         self.locationManager.activityType = CLActivityTypeFitness;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-        self.locationManager.pausesLocationUpdatesAutomatically = NO;
-        [self.locationManager startUpdatingLocation];
-        [self.locationManager startUpdatingHeading];
-
-    }
-    else if (_currentAlertState < BLNAlertStateRed)
-    {
-        [self.locationManager stopUpdatingHeading];
-        [self.locationManager stopUpdatingLocation];
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     }
 }
 
@@ -294,10 +286,15 @@
                 return;
             }
             
-            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
-            double serverScore = [[jsonDict objectForKey:@"score"] floatValue];
-            BLNAlertState locationScore = (NSUInteger)round(1.0 / BLNAlertStateRed / (1 - serverScore));
+//            const NSNumberFormatter *numberFormatter = nil;
+//            if (!numberFormatter)
+//                numberFormatter = [[NSNumberFormatter alloc] init];
+//            numberFormatter number
+            
+            double serverScore = string.doubleValue;
+            BLNAlertState locationScore = (NSUInteger)round(1.0 / BLNAlertStateRed / (1.0 - serverScore));
             
             if (locationScore != self.currentLocationScore)
             {
