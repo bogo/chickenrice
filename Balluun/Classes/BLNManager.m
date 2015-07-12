@@ -102,7 +102,7 @@
         return;
     }
     
-    if (_currentAlertState == BLNAlertStateDEFCON && currentAlertState != BLNAlertStateGreen)
+    if (_currentAlertState == BLNAlertStateDEFCON && currentAlertState != BLNAlertStateGreen && currentAlertState != BLNAlertStatePanicked)
     {
         return;
     }
@@ -414,9 +414,9 @@
     NSString *type = [BLNCommon typeForMessageUserInfo:message];
     NSDictionary *payload = [BLNCommon payloadForMessageUserInfo:message];
    
-    NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
     if ([type isEqualToString:BLNMessageRequestLatestStateType])
     {
+        NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
     
@@ -426,24 +426,28 @@
         _currentHeartRate = [latestSample objectForKey:BLMMessageBiometricHeartRateKey];
         NSLog(@"HELLO HEARTBEAT! %@", payload);
         [self updateServer];
+        NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessagePANICINTHEDISCOType])
     {
         [self setCurrentAlertState:BLNAlertStateDEFCON];
+        NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessageCheerioType])
     {
         [self setCurrentAlertState:BLNAlertStateGreen];
+        NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
     
     if ([type isEqualToString:BLNMessagePanicType])
     {
         [self panic];
+        NSDictionary *currentState = @{BLNManagerCurrentAlertStateKey: @(self.currentAlertState), BLNManagerBalloonIndexKey: @(self.currentLocationScore), BLNMessageTimeStampKey: @([self.currentLocationScoreTimestamp timeIntervalSinceReferenceDate])};
         replyHandler(currentState);
     }
 }
